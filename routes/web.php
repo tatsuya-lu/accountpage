@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\TableController;
 use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
 
@@ -47,9 +48,10 @@ Route::get('/admin/register', [\App\Http\Controllers\RegisterController::class, 
 
 Route::post('/admin/register', [\App\Http\Controllers\RegisterController::class, 'adminRegister'])->middleware('auth:admin')->name('admin.register');
 
-//入力フォームページ
-Route::get('/contact', [\App\Http\Controllers\ContactsController::class, 'index'])->name('contact.index');
-//確認フォームページ
-Route::post('/contact/confirm', [\App\Http\Controllers\ContactsController::class, 'confirm'])->name('contact.confirm');
-//送信完了フォームページ
-Route::post('/contact/thanks', [\App\Http\Mail\ContactsController::class, 'send'])->name('contact.send');
+Route::get('/admin/table', [App\Http\Controllers\TableController::class, 'adminTable'])->name('admin.table');
+// //入力フォームページ
+// Route::get('/contact', [\App\Http\Controllers\ContactsController::class, 'index'])->name('contact.index');
+// //確認フォームページ
+// Route::post('/contact/confirm', [\App\Http\Controllers\ContactsController::class, 'confirm'])->name('contact.confirm');
+// //送信完了フォームページ
+// Route::post('/contact/thanks', [\App\Http\Mail\ContactsController::class, 'send'])->name('contact.send');
