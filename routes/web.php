@@ -48,7 +48,21 @@ Route::get('/admin/register', [\App\Http\Controllers\RegisterController::class, 
 
 Route::post('/admin/register', [\App\Http\Controllers\RegisterController::class, 'adminRegister'])->middleware('auth:admin')->name('admin.register');
 
-Route::get('/admin/table', [App\Http\Controllers\TableController::class, 'adminTable'])->name('admin.table');
+// Route::get('/admin/table', [App\Http\Controllers\TableController::class, 'adminTable'])->name('admin.table');
+
+Route::prefix('admin')->middleware(['auth:admin'])->group(function () {
+    // 既存のアカウント一覧表示
+    Route::get('/table', [TableController::class, 'adminTable'])->name('admin.table');
+
+    // アカウント編集フォーム表示
+    Route::get('/table/{user}/edit', [TableController::class, 'edit'])->name('admin.table.edit');
+
+    // アカウント編集処理
+    Route::put('/table/{user}', [TableController::class, 'update'])->name('admin.table.update');
+
+    // アカウント削除処理
+    Route::delete('/table/{user}', [TableController::class, 'destroy'])->name('admin.table.destroy');
+});
 // //入力フォームページ
 // Route::get('/contact', [\App\Http\Controllers\ContactsController::class, 'index'])->name('contact.index');
 // //確認フォームページ

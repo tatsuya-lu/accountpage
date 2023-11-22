@@ -226,4 +226,27 @@ table td {
     font-size: 15px;
 }
 
+.account {
+    width: 90%;
+    margin-left: 50px;
+}
+
+.account th {
+    background-color: rgb(224, 224, 224);
+    
+}
+
+.account td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 17px;
+}
+
+.fa-trash-can {
+    color: red;
+}
+
+.table-center {
+    text-align: center;
+}
 
