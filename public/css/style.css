@@ -238,17 +238,34 @@ table td {
 }
 
 .account td {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px 8px 10px 8px;
     font-size: 17px;
 }
 
 .fa-trash-can {
     color: red;
-    border: none;
+    font-size: 1.2em;
+}
+
+.fa-pen-to-square {
+    color: rgb(102, 99, 99);
+    font-size: 1.2em;
 }
 
 .table-center {
     text-align: center;
 }
 
+.no-border {
+    border: none;
+    background: none;
+}
+
+.edit-form button{
+    margin-left: 48px;
+    margin-top: 15px;
+}
+
+.edit-form table {
+    width: auto;
+}

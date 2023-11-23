@@ -19,7 +19,10 @@
         </header>
 
         <main>
-            <p class="admin">管理者 ログイン中：{{ Auth::guard('admin')->user()->name ?? 'undefined' }}</p>
+            <p class="admin">ログイン中：管理者 {{ Auth::guard('admin')->user()->name ?? 'undefined' }}</p>
+            <a href="{{ route('admin.logout') }}">
+                <p class="logout-btn">ログアウト</p>
+            </a>
             <div class="main-aria">
                 <p class="page-title">アカウント一覧</p>
                 @if ($errors->any())

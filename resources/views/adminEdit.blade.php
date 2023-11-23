@@ -27,13 +27,13 @@
             <!-- メインのコードを追加 -->
             <p class="admin">管理者 ログイン中：{{ Auth::guard('admin')->user()->name ?? 'undefined' }}</p>
             <a href="{{ route('admin.logout') }}">
-                <p>ログアウト</p>
+                <p class="logout-btn">ログアウト</p>
             </a>
             <div class="main-aria">
                 <p class="page-title">アカウント編集</p>
 
                 <!-- ユーザー情報の表示フォームを追加 -->
-                <form method="POST" action="{{ route('admin.table.update', $user->id) }}">
+                <form method="POST" action="{{ route('admin.table.update', $user->id) }}" class="edit-form">
                     @csrf
                     @method('PUT')
                     <table class="account">
@@ -44,17 +44,17 @@
                         </tr>
                         <tr>
                             <td>
-                                <input type="text" name="name" value="{{ $user->name }}">
+                                <input type="text" name="name" class="no-border" value="{{ $user->name }}">
                             </td>
                             <td>
-                                <input type="text" name="email" value="{{ $user->email }}">
+                                <input type="text" name="email" class="no-border" value="{{ $user->email }}">
                             </td>
                             <td>
-                                <input type="password" name="password" placeholder="新しいパスワード">
+                                <input type="password" name="password" class="no-border" placeholder="新しいパスワード">
                             </td>
                         </tr>
-                        <button type="submit" class="Form-Btn">更新</button>
                     </table>
+                    <button type="submit" class="Form-Btn">更新</button>
                 </form>
             </div>
         </main>
