@@ -33,15 +33,15 @@
                 <p class="page-title">アカウント編集</p>
 
                 <!-- ユーザー情報の表示フォームを追加 -->
-                <table class="account">
-                    <tr>
-                        <th>名前</th>
-                        <th>メールアドレス</th>
-                        <th>新しいパスワード</th>
-                    </tr>
-                    <form method="POST" action="{{ route('admin.table.update', $user->id) }}">
-                        @csrf
-                        @method('PUT')
+                <form method="POST" action="{{ route('admin.table.update', $user->id) }}">
+                    @csrf
+                    @method('PUT')
+                    <table class="account">
+                        <tr>
+                            <th>名前</th>
+                            <th>メールアドレス</th>
+                            <th>新しいパスワード</th>
+                        </tr>
                         <tr>
                             <td>
                                 <input type="text" name="name" value="{{ $user->name }}">
@@ -53,9 +53,9 @@
                                 <input type="password" name="password" placeholder="新しいパスワード">
                             </td>
                         </tr>
-                        <button type="submit" class="btn btn-primary">更新</button>
-                    </form>
-                </table>
+                        <button type="submit" class="Form-Btn">更新</button>
+                    </table>
+                </form>
             </div>
         </main>
     </div>

@@ -76,8 +76,13 @@ class TableController extends Controller
 
     public function destroy(AdminUser $user)
     {
-        $user->delete();
+       // ユーザー削除前にログアウトする
+    auth('admin')->logout();
 
-        return redirect()->route('admin.table')->with('success', 'ユーザーが正常に削除されました。');
+    // ユーザー削除
+    $user->delete();
+
+    // 削除後にリダイレクト
+    return redirect()->route('admin.login')->with('success', 'ユーザーが正常に削除されました。');
     }
 }

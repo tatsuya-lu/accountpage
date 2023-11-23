@@ -43,7 +43,7 @@
                         @foreach ($users as $user)
                             <tr>
                                 <td class="table-center">
-                                    <a href="{{ route('admin.table.edit', $user->id) }}" class="btn btn-warning">
+                                    <a href="{{ route('admin.table.edit', $user->id) }}">
                                         <span class="fa-solid fa-pen-to-square"></span>
                                     </a>
                                 </td>
@@ -51,7 +51,7 @@
                                     <form method="POST" action="{{ route('admin.table.destroy', $user->id) }}" onsubmit="return confirm('削除します。よろしいですか？')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">
+                                        <button type="submit">
                                             <span class="fa-solid fa-trash-can"></span>
                                         </button>
                                     </form>
