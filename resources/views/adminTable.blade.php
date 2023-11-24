@@ -24,10 +24,15 @@
         <main>
             <p class="admin">管理者 ログイン中：{{ Auth::guard('admin')->user()->name ?? 'undefined' }}</p>
             <a href="{{ route('admin.logout') }}">
-                <p class="logout-btn">ログアウト</p>
+                <p class="logout"><span class="logout-btn">ログアウト</span></p>
             </a>
             <div class="main-aria">
-                <p class="page-title">アカウント一覧</p>
+                <div class="table-title">
+                    <p class="page-title">アカウント一覧</p>
+                    <a href="{{ route('admin.register') }}">
+                        <p class="regist-btn"><span class="fa-solid fa-circle-plus"></span>新規作成</p>
+                    </a>
+                </div>
                 <div class="table">
                     <table class="account">
                         <tr>
@@ -48,7 +53,8 @@
                                     </a>
                                 </td>
                                 <td class="table-center">
-                                    <form method="POST" action="{{ route('admin.table.destroy', $user->id) }}" onsubmit="return confirm('削除します。よろしいですか？')">
+                                    <form method="POST" action="{{ route('admin.table.destroy', $user->id) }}"
+                                        onsubmit="return confirm('削除します。よろしいですか？')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="no-border">

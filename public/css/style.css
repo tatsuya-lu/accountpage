@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-*{
+* {
     margin: 0;
     padding: 0;
 }
@@ -45,12 +45,18 @@ a {
     padding: 15px 25px 0 25px;
 }
 
-.logout-btn{
+.logout {
     text-align: right;
     font-size: 18px;
     color: rgb(102, 99, 99);
-    padding:0 25px 10px 0;
+    padding: 0 25px 10px 0;
     margin: 0;
+}
+
+.logout-btn {
+    border-radius: 3px;
+    background-color: rgba(241, 116, 116, 0.3);
+    padding: 8px 15px 8px 15px;
 }
 
 
@@ -114,8 +120,8 @@ a {
 }
 
 .table-title {
-   display: flex;
-   justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .new {
@@ -144,7 +150,7 @@ table td {
 .Form {
     max-width: 100%;
     margin: 10px 20px;
-    padding:5px 10px;
+    padding: 5px 10px;
     border: 1px solid #a0a0a0;
     border-radius: 3px;
 }
@@ -168,14 +174,15 @@ table td {
 
 .Form-Item-Label.isMsg {
     margin-top: 8px;
-    margin-bottom: auto;
+    margin-bottom: 10px;
+
 }
 
 
 .Form-Item-Label-Required {
     border-radius: 6px;
     margin-right: 5px;
-    padding:5px 0;
+    padding: 5px 0;
     width: 48px;
     display: inline-block;
     text-align: center;
@@ -201,14 +208,13 @@ table td {
 .Form-Item-Textarea {
     border: 1px solid #ddd;
     border-radius: 6px;
-    margin-left: 40px;
     padding-left: 1em;
     padding-right: 1em;
     height: 216px;
     flex: 1;
     width: 100%;
-    max-width: 410px;
-    background: #eaedf2;
+    max-width: 1500px;
+    background: #ffffff;
     font-size: 18px;
 }
 
@@ -234,7 +240,7 @@ table td {
 
 .account th {
     background-color: rgb(224, 224, 224);
-    
+
 }
 
 .account td {
@@ -261,11 +267,29 @@ table td {
     background: none;
 }
 
-.edit-form button{
+.edit-form button {
     margin-left: 48px;
     margin-top: 15px;
 }
 
 .edit-form table {
     width: auto;
+}
+
+.table-title {
+    display: flex;
+}
+
+.regist-btn {
+    border-radius: 6px;
+    margin-top: 28px;
+    margin-right: 20px;
+    padding: 8px 10px 8px 10px;
+    width: auto;
+    display: block;
+    letter-spacing: 0.05em;
+    background: #5bc8ac;
+    color: #fff;
+    font-weight: bold;
+    font-size: 15px;
 }

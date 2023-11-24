@@ -21,7 +21,7 @@
         <main>
             <p class="admin">ログイン中：管理者 {{ Auth::guard('admin')->user()->name ?? 'undefined' }}</p>
             <a href="{{ route('admin.logout') }}">
-                <p class="logout-btn">ログアウト</p>
+                <p class="logout"><span class="logout-btn">ログアウト</span></p>
             </a>
             <div class="main-aria">
                 <p class="page-title">HOME</p>
@@ -29,7 +29,7 @@
                     <a href="{{ route('admin.register') }}">
                         <p><span class="regist">アカウント登録</span></p>
                     </a>
-                    <p><span class="summary">アカウント一覧</span></p>
+                    <a href="{{ route('admin.table')}}"><p><span class="summary">アカウント一覧</span></p></a>
                 </div>
             </div>
 

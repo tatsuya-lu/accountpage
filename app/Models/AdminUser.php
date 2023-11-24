@@ -22,6 +22,7 @@ class AdminUser extends Model implements Authenticatable {
         'prefecture',
         'city',
         'street',
+        'body',
         'admin_level',
     ];
 

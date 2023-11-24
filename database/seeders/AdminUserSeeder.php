@@ -19,11 +19,12 @@ class AdminUserSeeder extends Seeder
             'sub_name' => 'オーナー',
             'email' => 'owner@example.com',
             'password' => Hash::make('password'),
-            'tel' => '000-0000-0000',
-            'post_code' => '000-0000',
+            'tel' => '00000000000',
+            'post_code' => '0000000',
             'prefecture'=> '大阪府',
             'city'=> '大阪市',
             'street'=> '中央区',
+            'body'=> 'テスト用権限有りアカウント',
             'admin_level' => 1,
         ]);
         DB::table('admin_users')->insert([
@@ -31,11 +32,12 @@ class AdminUserSeeder extends Seeder
             'sub_name' => 'オーナー',
             'email' => 'sub@example.com',
             'password' => Hash::make('password'),
-            'tel' => '000-0000-0000',
-            'post_code' => '000-0000',
+            'tel' => '00000000000',
+            'post_code' => '0000000',
             'prefecture'=> '大阪府',
             'city'=> '大阪市',
             'street'=> '中央区',
+            'body'=> 'テスト用権限無しアカウント',
             'admin_level' => 0,
         ]);
     }

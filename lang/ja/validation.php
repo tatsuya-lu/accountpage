@@ -155,29 +155,34 @@ return [
     */
 
     'custom' => [
-        'company' => [
-            'required' => '会社名は必須項目です。',
+        'name' => [
+            'required' => '名前は必須項目です。',
         ],
         'name' => [
-            'required' => '氏名は必須項目です。',
-        ],
-        'tel' => [
-            'required' => '電話番号は必須項目です。',
+            'required' => 'フリガナは必須項目です。',
         ],
         'email' => [
             'required' => 'メールアドレスは必須項目です。',
         ],
-        'birthday' => [
-            'required' => '誕生日は必須項目です。',
+        'password' => [
+            'required' => 'パスワードは必須項目です。',
         ],
-        'gender' => [
-            'required' => '性別は必須項目です。',
+        'tel' => [
+            'required' => '電話番号は必須項目です。',
+            'regex' => 'ハイフン無し、正しい形式で入力してください。',
         ],
-        'profession' => [
-            'required' => '職業は必須項目です。',
+        'post-code' => [
+            'required' => '郵便番号は必須項目です。',
+            'regex' => 'ハイフン無し、正しい形式で入力してください。',
         ],
-        'body' => [
-            'required' => 'お問い合わせ内容は必須項目です。',
+        'prefecture' => [
+            'required' => '都道府県は必須項目です。',
+        ],
+        'city' => [
+            'required' => '市区町村は必須項目です。',
+        ],
+        'street' => [
+            'required' => '番地・アパート名は必須項目です。',
         ],
     ],
 

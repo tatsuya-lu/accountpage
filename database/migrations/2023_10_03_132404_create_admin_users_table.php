@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('prefecture');
             $table->string('city');
             $table->string('street');
+            $table->text('body');
             $table->integer('admin_level');
             $table->timestamps();
         });
