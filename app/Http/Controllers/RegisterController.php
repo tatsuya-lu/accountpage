@@ -46,6 +46,7 @@ class RegisterController extends Controller
             'prefecture'=> $data['prefecture'],
             'city'=> $data['city'],
             'street'=> $data['street'],
+            'body'=> $data['body'],
             'admin_level' => $data['admin_level'],
         ]);
     }

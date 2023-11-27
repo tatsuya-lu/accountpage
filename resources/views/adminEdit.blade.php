@@ -24,27 +24,30 @@
         </header>
 
         <main>
-            <!-- メインのコードを追加 -->
+            
             <p class="admin">管理者 ログイン中：{{ Auth::guard('admin')->user()->name ?? 'undefined' }}</p>
-            <a href="{{ route('admin.logout') }}">
-                <p class="logout"><span class="logout-btn">ログアウト</span></p>
-            </a>
+            <p class="logout"><a href="{{ route('admin.logout') }}"><span class="logout-btn">ログアウト</span></a></p>
+            
             <div class="main-aria">
                 <p class="page-title">アカウント編集</p>
 
-                <!-- ユーザー情報の表示フォームを追加 -->
+                
                 <form method="POST" action="{{ route('admin.table.update', $user->id) }}" class="edit-form">
                     @csrf
                     @method('PUT')
                     <table class="account">
                         <tr>
                             <th>名前</th>
+                            <th>フリガナ</th>
                             <th>メールアドレス</th>
                             <th>新しいパスワード</th>
                         </tr>
                         <tr>
                             <td>
                                 <input type="text" name="name" class="no-border" value="{{ $user->name }}">
+                            </td>
+                            <td>
+                                <input type="text" name="sub_name" class="no-border" value="{{ $user->sub_name }}">
                             </td>
                             <td>
                                 <input type="text" name="email" class="no-border" value="{{ $user->email }}">

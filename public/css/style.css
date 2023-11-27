@@ -293,3 +293,25 @@ table td {
     font-weight: bold;
     font-size: 15px;
 }
+
+.fa-circle-plus {
+    margin-right: 5px;
+}
+
+.success {
+    border-radius: 6px;
+    margin-left: 25px;
+    margin-right: 25px;
+    padding: 5px 0;
+    width: auto;
+    text-align: center;
+    background: #5bc8ac;
+    color: #fff;
+    font-size: 14px;
+}
+
+.error-message {
+    color: red;
+    font-size: 15px;
+    white-space: nowrap;
+}

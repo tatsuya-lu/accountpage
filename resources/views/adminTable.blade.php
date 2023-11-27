@@ -23,9 +23,8 @@
 
         <main>
             <p class="admin">管理者 ログイン中：{{ Auth::guard('admin')->user()->name ?? 'undefined' }}</p>
-            <a href="{{ route('admin.logout') }}">
-                <p class="logout"><span class="logout-btn">ログアウト</span></p>
-            </a>
+            <p class="logout"><a href="{{ route('admin.logout') }}"><span class="logout-btn">ログアウト</span></a></p>
+            
             <div class="main-aria">
                 <div class="table-title">
                     <p class="page-title">アカウント一覧</p>

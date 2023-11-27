@@ -11,8 +11,12 @@
         <header>
             <p class="side-button"><span class="fa-solid fa-bars"></span></p>
             <div class="side-menulist">
-                <a href="{{ route('admin.dashboard')}}"><p><span class="fa-solid fa-house"></span>HOME</p></a>
-                <a href="{{ route('admin.table')}}"><p><span class="fa-solid fa-envelopes-bulk"></span>アカウント一覧</p></a>
+                <a href="{{ route('admin.dashboard') }}">
+                    <p><span class="fa-solid fa-house"></span>HOME</p>
+                </a>
+                <a href="{{ route('admin.table') }}">
+                    <p><span class="fa-solid fa-envelopes-bulk"></span>アカウント一覧</p>
+                </a>
                 <p><span class="fa-solid fa-envelopes-bulk"></span>お問い合わせ一覧</p>
             </div>
 
@@ -20,16 +24,13 @@
 
         <main>
             <p class="admin">ログイン中：管理者 {{ Auth::guard('admin')->user()->name ?? 'undefined' }}</p>
-            <a href="{{ route('admin.logout') }}">
-                <p class="logout"><span class="logout-btn">ログアウト</span></p>
-            </a>
+            <p class="logout"><a href="{{ route('admin.logout') }}"><span class="logout-btn">ログアウト</span></a></p>
+
             <div class="main-aria">
                 <p class="page-title">HOME</p>
                 <div class="table-menu">
-                    <a href="{{ route('admin.register') }}">
-                        <p><span class="regist">アカウント登録</span></p>
-                    </a>
-                    <a href="{{ route('admin.table')}}"><p><span class="summary">アカウント一覧</span></p></a>
+                    <p><a href="{{ route('admin.register') }}"><span class="regist">アカウント登録</span></a></p>
+                    <p><a href="{{ route('admin.table') }}"><span class="summary">アカウント一覧</span></a></p>
                 </div>
             </div>
 
