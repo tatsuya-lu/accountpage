@@ -63,9 +63,3 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function () {
     // アカウント削除処理
     Route::delete('/table/{user}', [TableController::class, 'destroy'])->name('admin.table.destroy');
 });
-// //入力フォームページ
-// Route::get('/contact', [\App\Http\Controllers\ContactsController::class, 'index'])->name('contact.index');
-// //確認フォームページ
-// Route::post('/contact/confirm', [\App\Http\Controllers\ContactsController::class, 'confirm'])->name('contact.confirm');
-// //送信完了フォームページ
-// Route::post('/contact/thanks', [\App\Http\Mail\ContactsController::class, 'send'])->name('contact.send');

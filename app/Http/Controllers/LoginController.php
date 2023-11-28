@@ -32,13 +32,13 @@ class LoginController extends Controller
                 $request->session()->regenerate();
 
                 return back()->withErrors([
-                    'error' => 'You do not have permission to log in.',
+                    'error' => 'このアカウントには権限がないためログインできません。',
                 ]);
             }
         }
 
         return back()->withErrors([
-            'error' => 'The provided credentials do not match our records'
+            'error' => '入力された内容が一致しませんでした。'
         ]);
     }
 
