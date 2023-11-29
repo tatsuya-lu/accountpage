@@ -71,7 +71,7 @@ class TableController extends Controller
 
     public function edit(AdminUser $user)
     {
-        return View::make('adminEdit', compact('user'));
+        return View::make('adminRegister', compact('user'));
     }
 
     public function destroy(AdminUser $user)

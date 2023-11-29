@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <title>ダッシュボード</title>
+    <title>アカウント一覧</title>
     @extends('layouts.app')
 </head>
 

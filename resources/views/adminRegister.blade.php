@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <title>登録</title>
+    <title>アカウント登録</title>
     @extends('layouts.app')
 </head>
 
@@ -32,14 +32,19 @@
                 @isset($registered)
                     <div class="success">登録に成功しました。メールアドレス：{{ $registered_email }}</div>
                 @endisset
-                <form method="POST" action="{{ route('admin.register') }}">
+
+                <form method="POST"
+                    action="{{ isset($user) ? route('admin.table.update', ['user' => $user->id]) : route('admin.register') }}">
                     @csrf
+                    @if (isset($user))
+                        @method('PUT')
+                    @endif
                     <div class="Form">
 
                         <div class="Form-Item">
                             <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>会員名</p>
-                            <input type="text" id="name" name="name" class="Form-Item-Input" value="{{ old('name') }}"
-                                placeholder="例）山田太郎">
+                            <input type="text" id="name" name="name" class="Form-Item-Input"
+                                value="{{ old('name', isset($user) ? $user->name : '') }}" placeholder="例）山田太郎">
 
                             @if ($errors->has('name'))
                                 <p class="error-message">{{ $errors->first('name') }}</p>
@@ -48,7 +53,8 @@
 
                         <div class="Form-Item">
                             <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>フリガナ</p>
-                            <input type="text" id="sub_name" name="sub_name" class="Form-Item-Input" value="{{ old('sub_name') }}"
+                            <input type="text" id="sub_name" name="sub_name" class="Form-Item-Input"
+                                value="{{ old('sub_name', isset($user) ? $user->sub_name : '') }}"
                                 placeholder="例）ヤマダタロウ">
 
                             @if ($errors->has('sub_name'))
@@ -58,7 +64,8 @@
 
                         <div class="Form-Item">
                             <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>メールアドレス</p>
-                            <input type="text" id="email" name="email" class="Form-Item-Input" value="{{ old('email') }}"
+                            <input type="text" id="email" name="email" class="Form-Item-Input"
+                                value="{{ old('email', isset($user) ? $user->email : '') }}"
                                 placeholder="例）example@gmail.com">
 
                             @if ($errors->has('email'))
@@ -68,8 +75,8 @@
 
                         <div class="Form-Item">
                             <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>パスワード</p>
-                            <input type="password" id="password" name="password" class="Form-Item-Input" value="{{ old('password') }}"
-                                placeholder="八文字以上で入力してください。">
+                            <input type="password" id="password" name="password" class="Form-Item-Input"
+                                value="{{ old('password') }}" placeholder="八文字以上で入力してください。">
 
                             @if ($errors->has('password'))
                                 <p class="error-message">{{ $errors->first('password') }}</p>
@@ -88,7 +95,8 @@
 
                         <div class="Form-Item">
                             <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>電話番号</p>
-                            <input type="text" id="tel" name="tel" class="Form-Item-Input" value="{{ old('tel') }}"
+                            <input type="text" id="tel" name="tel" class="Form-Item-Input"
+                                value="{{ old('tel', isset($user) ? $user->tel : '') }}"
                                 placeholder="例）000 0000 0000   注:ハイフン無しで入力してください">
 
                             @if ($errors->has('tel'))
@@ -98,7 +106,8 @@
 
                         <div class="Form-Item">
                             <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>郵便番号</p>
-                            <input type="text" id="post_code" name="post_code" class="Form-Item-Input" value="{{ old('post_code') }}"
+                            <input type="text" id="post_code" name="post_code" class="Form-Item-Input"
+                                value="{{ old('post_code', isset($user) ? $user->post_code : '') }}"
                                 placeholder="例）000 0000   注:ハイフン無しで入力してください">
 
                             @if ($errors->has('post_code'))
@@ -110,53 +119,53 @@
                             <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>都道府県</p>
                             <select name="prefecture" id="prefecture" class="Form-Item-Input">
                                 <option value="" selected disabled>都道府県を選択してください</option>
-                                <option value="北海道" @if (old('prefecture') == '北海道') selected @endif>北海道</option>
-                                <option value="青森県" @if (old('prefecture') == '青森県') selected @endif>青森県</option>
-                                <option value="岩手県" @if (old('prefecture') == '岩手県') selected @endif>岩手県</option>
-                                <option value="宮城県" @if (old('prefecture') == '宮城県') selected @endif>宮城県</option>
-                                <option value="秋田県" @if (old('prefecture') == '秋田県') selected @endif>秋田県</option>
-                                <option value="山形県" @if (old('prefecture') == '山形県') selected @endif>山形県</option>
-                                <option value="福島県" @if (old('prefecture') == '福島県') selected @endif>福島県</option>
-                                <option value="茨城県" @if (old('prefecture') == '茨城県') selected @endif>茨城県</option>
-                                <option value="栃木県" @if (old('prefecture') == '栃木県') selected @endif>栃木県</option>
-                                <option value="群馬県" @if (old('prefecture') == '群馬県') selected @endif>群馬県</option>
-                                <option value="埼玉県" @if (old('prefecture') == '埼玉県') selected @endif>埼玉県</option>
-                                <option value="千葉県" @if (old('prefecture') == '千葉県') selected @endif>千葉県</option>
-                                <option value="東京都" @if (old('prefecture') == '東京都') selected @endif>東京都</option>
-                                <option value="神奈川県" @if (old('prefecture') == '神奈川県') selected @endif>神奈川県</option>
-                                <option value="新潟県" @if (old('prefecture') == '新潟県') selected @endif>新潟県</option>
-                                <option value="富山県" @if (old('prefecture') == '富山県') selected @endif>富山県</option>
-                                <option value="石川県" @if (old('prefecture') == '石川県') selected @endif>石川県</option>
-                                <option value="福井県" @if (old('prefecture') == '福井県') selected @endif>福井県</option>
-                                <option value="山梨県" @if (old('prefecture') == '山梨県') selected @endif>山梨県</option>
-                                <option value="長野県" @if (old('prefecture') == '長野県') selected @endif>長野県</option>
-                                <option value="岐阜県" @if (old('prefecture') == '岐阜県') selected @endif>岐阜県</option>
-                                <option value="静岡県" @if (old('prefecture') == '静岡県') selected @endif>静岡県</option>
-                                <option value="愛知県" @if (old('prefecture') == '愛知県') selected @endif>愛知県</option>
-                                <option value="三重県" @if (old('prefecture') == '三重県') selected @endif>三重県</option>
-                                <option value="滋賀県" @if (old('prefecture') == '滋賀県') selected @endif>滋賀県</option>
-                                <option value="京都府" @if (old('prefecture') == '京都府') selected @endif>京都府</option>
-                                <option value="大阪府" @if (old('prefecture') == '大阪府') selected @endif>大阪府</option>
-                                <option value="兵庫県" @if (old('prefecture') == '兵庫県') selected @endif>兵庫県</option>
-                                <option value="奈良県" @if (old('prefecture') == '奈良県') selected @endif>奈良県</option>
-                                <option value="和歌山県" @if (old('prefecture') == '和歌山県') selected @endif>和歌山県</option>
-                                <option value="鳥取県" @if (old('prefecture') == '鳥取県') selected @endif>鳥取県</option>
-                                <option value="島根県" @if (old('prefecture') == '島根県') selected @endif>島根県</option>
-                                <option value="岡山県" @if (old('prefecture') == '岡山県') selected @endif>岡山県</option>
-                                <option value="広島県" @if (old('prefecture') == '広島県') selected @endif>広島県</option>
-                                <option value="山口県" @if (old('prefecture') == '山口県') selected @endif>山口県</option>
-                                <option value="徳島県" @if (old('prefecture') == '徳島県') selected @endif>徳島県</option>
-                                <option value="香川県" @if (old('prefecture') == '香川県') selected @endif>香川県</option>
-                                <option value="愛媛県" @if (old('prefecture') == '愛媛県') selected @endif>愛媛県</option>
-                                <option value="高知県" @if (old('prefecture') == '高知県') selected @endif>高知県</option>
-                                <option value="福岡県" @if (old('prefecture') == '福岡県') selected @endif>福岡県</option>
-                                <option value="佐賀県" @if (old('prefecture') == '佐賀県') selected @endif>佐賀県</option>
-                                <option value="長崎県" @if (old('prefecture') == '長崎県') selected @endif>長崎県</option>
-                                <option value="熊本県" @if (old('prefecture') == '熊本県') selected @endif>熊本県</option>
-                                <option value="大分県" @if (old('prefecture') == '大分県') selected @endif>大分県</option>
-                                <option value="宮崎県" @if (old('prefecture') == '宮城県') selected @endif>宮崎県</option>
-                                <option value="鹿児島県" @if (old('prefecture') == '鹿児島県') selected @endif>鹿児島県</option>
-                                <option value="沖縄県" @if (old('prefecture') == '沖縄県') selected @endif>沖縄県</option>
+                                <option value="北海道" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '北海道') selected @endif>北海道</option>
+                                <option value="青森県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '青森県') selected @endif>青森県</option>
+                                <option value="岩手県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '岩手県') selected @endif>岩手県</option>
+                                <option value="宮城県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '宮城県') selected @endif>宮城県</option>
+                                <option value="秋田県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '秋田県') selected @endif>秋田県</option>
+                                <option value="山形県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '山形県') selected @endif>山形県</option>
+                                <option value="福島県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '福島県') selected @endif>福島県</option>
+                                <option value="茨城県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '茨城県') selected @endif>茨城県</option>
+                                <option value="栃木県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '栃木県') selected @endif>栃木県</option>
+                                <option value="群馬県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '群馬県') selected @endif>群馬県</option>
+                                <option value="埼玉県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '埼玉県') selected @endif>埼玉県</option>
+                                <option value="千葉県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '千葉県') selected @endif>千葉県</option>
+                                <option value="東京都" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '東京都') selected @endif>東京都</option>
+                                <option value="神奈川県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '神奈川県') selected @endif>神奈川県</option>
+                                <option value="新潟県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '新潟県') selected @endif>新潟県</option>
+                                <option value="富山県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '富山県') selected @endif>富山県</option>
+                                <option value="石川県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '石川県') selected @endif>石川県</option>
+                                <option value="福井県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '福井県') selected @endif>福井県</option>
+                                <option value="山梨県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '山梨県') selected @endif>山梨県</option>
+                                <option value="長野県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '長野県') selected @endif>長野県</option>
+                                <option value="岐阜県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '岐阜県') selected @endif>岐阜県</option>
+                                <option value="静岡県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '静岡県') selected @endif>静岡県</option>
+                                <option value="愛知県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '愛知県') selected @endif>愛知県</option>
+                                <option value="三重県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '三重県') selected @endif>三重県</option>
+                                <option value="滋賀県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '滋賀県') selected @endif>滋賀県</option>
+                                <option value="京都府" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '京都府') selected @endif>京都府</option>
+                                <option value="大阪府" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '大阪府') selected @endif>大阪府</option>
+                                <option value="兵庫県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '兵庫県') selected @endif>兵庫県</option>
+                                <option value="奈良県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '奈良県') selected @endif>奈良県</option>
+                                <option value="和歌山県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '和歌山県') selected @endif>和歌山県</option>
+                                <option value="鳥取県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '鳥取県') selected @endif>鳥取県</option>
+                                <option value="島根県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '島根県') selected @endif>島根県</option>
+                                <option value="岡山県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '岡山県') selected @endif>岡山県</option>
+                                <option value="広島県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '広島県') selected @endif>広島県</option>
+                                <option value="山口県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '山口県') selected @endif>山口県</option>
+                                <option value="徳島県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '徳島県') selected @endif>徳島県</option>
+                                <option value="香川県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '香川県') selected @endif>香川県</option>
+                                <option value="愛媛県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '愛媛県') selected @endif>愛媛県</option>
+                                <option value="高知県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '高知県') selected @endif>高知県</option>
+                                <option value="福岡県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '福岡県') selected @endif>福岡県</option>
+                                <option value="佐賀県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '佐賀県') selected @endif>佐賀県</option>
+                                <option value="長崎県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '長崎県') selected @endif>長崎県</option>
+                                <option value="熊本県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '熊本県') selected @endif>熊本県</option>
+                                <option value="大分県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '大分県') selected @endif>大分県</option>
+                                <option value="宮崎県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '宮崎県') selected @endif>宮崎県</option>
+                                <option value="鹿児島県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '鹿児島県') selected @endif>鹿児島県</option>
+                                <option value="沖縄県" @if (old('prefecture', isset($user) ? $user->prefecture : '') == '沖縄県') selected @endif>沖縄県</option>
                             </select>
 
                             @if ($errors->has('prefecture'))
@@ -164,10 +173,11 @@
                             @endif
                         </div>
 
+
                         <div class="Form-Item">
                             <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>市町村</p>
-                            <input type="text" id="city" name="city" class="Form-Item-Input" value="{{ old('city') }}"
-                                placeholder="">
+                            <input type="text" id="city" name="city" class="Form-Item-Input"
+                                value="{{ old('city', isset($user) ? $user->city : '') }}" placeholder="">
 
                             @if ($errors->has('city'))
                                 <p class="error-message">{{ $errors->first('city') }}</p>
@@ -176,8 +186,8 @@
 
                         <div class="Form-Item">
                             <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>番地・アパート名</p>
-                            <input type="text" id="street" name="street" class="Form-Item-Input" value="{{ old('street') }}"
-                                placeholder="">
+                            <input type="text" id="street" name="street" class="Form-Item-Input"
+                                value="{{ old('street', isset($user) ? $user->street : '') }}" placeholder="">
 
                             @if ($errors->has('street'))
                                 <p class="error-message">{{ $errors->first('street') }}</p>
@@ -186,7 +196,7 @@
 
                         <div class="Form-Item">
                             <label class="Form-Item-Label isMsg">備考欄</label>
-                            <textarea class="Form-Item-Textarea" name="body">{{ old('body') }}</textarea>
+                            <textarea class="Form-Item-Textarea" name="body">{{ old('body', isset($user) ? $user->body : '') }}</textarea>
 
                             @if ($errors->has('body'))
                                 <p class="error-message">{{ $errors->first('body', '') }}</p>
@@ -197,8 +207,8 @@
                             <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>AdminLevel</p>
                             <select name="admin_level" id="admin_level" class="Form-Item-Input">
                                 <option value="0" selected disabled>権限を選択してください</option>
-                                <option value="0" @if (old('admin_level') == '0') selected @endif>社員</option>
-                                <option value="1" @if (old('admin_level') == '1') selected @endif>管理者</option>
+                                <option value="0" @if (old('admin_level', isset($user) ? $user->admin_level : '') == '0') selected @endif>社員</option>
+                                <option value="1" @if (old('admin_level', isset($user) ? $user->admin_level : '') == '1') selected @endif>管理者</option>
                             </select>
 
                             @if ($errors->has('admin_level'))
@@ -206,7 +216,7 @@
                             @endif
                         </div>
 
-                        <input type="submit" class="Form-Btn" value="確認する">
+                        <input type="submit" class="Form-Btn" value="{{ isset($user) ? '更新する' : '確認する' }}">
                     </div>
                 </form>
             </div>
