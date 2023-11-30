@@ -7,21 +7,32 @@
 </head>
 
 <body>
-        <div class="login-container">
-            @if ($errors->any()) {{--  エラーがあれば出力する --}}
-                @foreach ($errors->all() as $error)
-                    <div class="error-message">{{ $error }}</div>
-                @endforeach
+    <div class="login-container">
+
+        @if ($errors->has('error'))
+            <p class="error-message">{{ $errors->first('error') }}</p>
+        @endif
+
+        <form method="POST" action="{{ route('admin.login') }}">
+            @csrf
+
+            <label for="email">Mail</label>
+            <input type="text" id="email" name="email">
+
+            @if ($errors->has('email'))
+                <p class="error-message">{{ $errors->first('email') }}</p>
             @endif
-            <form method="POST" action="{{ route('admin.login') }}">
-                @csrf
-                <label for="email">Mail</label>
-                <input type="text" id="email" name="email">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password">
-                <button type="submit">Login</button>
-            </form>
-        </div>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password">
+
+            @if ($errors->has('password'))
+                <p class="error-message">{{ $errors->first('password') }}</p>
+            @endif
+            
+            <button type="submit">Login</button>
+        </form>
+    </div>
 </body>
 
 </html>
