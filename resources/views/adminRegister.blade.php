@@ -204,9 +204,9 @@
                         </div>
 
                         <div class="Form-Item">
-                            <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>AdminLevel</p>
+                            <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>アカウントの種類</p>
                             <select name="admin_level" id="admin_level" class="Form-Item-Input">
-                                <option value="0" selected disabled>権限を選択してください</option>
+                                <option value="0" selected disabled>アカウントの種類を選択してください</option>
                                 <option value="0" @if (old('admin_level', isset($user) ? $user->admin_level : '') == '0') selected @endif>社員</option>
                                 <option value="1" @if (old('admin_level', isset($user) ? $user->admin_level : '') == '1') selected @endif>管理者</option>
                             </select>

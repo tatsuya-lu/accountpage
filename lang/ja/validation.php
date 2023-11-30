@@ -158,7 +158,7 @@ return [
         'name' => [
             'required' => '名前は必須項目です。',
         ],
-        'name' => [
+        'sub_name' => [
             'required' => 'フリガナは必須項目です。',
         ],
         'email' => [
@@ -171,7 +171,7 @@ return [
             'required' => '電話番号は必須項目です。',
             'regex' => 'ハイフン無し、正しい形式で入力してください。',
         ],
-        'post-code' => [
+        'post_code' => [
             'required' => '郵便番号は必須項目です。',
             'regex' => 'ハイフン無し、正しい形式で入力してください。',
         ],
@@ -183,6 +183,9 @@ return [
         ],
         'street' => [
             'required' => '番地・アパート名は必須項目です。',
+        ],
+        'admin_level' => [
+            'required' => 'アカウントの種類は必須項目です。',
         ],
     ],
 
