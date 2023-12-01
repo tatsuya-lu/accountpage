@@ -24,7 +24,7 @@
         <main>
             <p class="admin">管理者 ログイン中：{{ Auth::guard('admin')->user()->name ?? 'undefined' }}</p>
             <p class="logout"><a href="{{ route('admin.logout') }}"><span class="logout-btn">ログアウト</span></a></p>
-            
+
             <div class="main-aria">
                 <div class="table-title">
                     <p class="page-title">アカウント一覧</p>
@@ -32,12 +32,27 @@
                         <p class="regist-btn"><span class="fa-solid fa-circle-plus"></span>新規作成</p>
                     </a>
                 </div>
+
+
+                @if (session('registered_message'))
+                    <div class="success">
+                        {{ session('registered_message') }} {{ session('registered_email') }}
+                    </div>
+                @endif
+
+                @if (session('success'))
+                    <div class="success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
                 <div class="table">
                     <table class="account">
                         <tr>
                             <th>編集</th>
                             <th>削除</th>
                             <th>名前</th>
+                            <th>アカウントの種類</th>
                             <th>メールアドレス</th>
                             <th>電話番号</th>
                             <th>都道府県</th>
@@ -62,6 +77,13 @@
                                     </form>
                                 </td>
                                 <td>{{ $user->name }}</td>
+                                <td>
+                                    @if ($user->admin_level == 0)
+                                        社員
+                                    @elseif ($user->admin_level == 1)
+                                        管理者
+                                    @endif
+                                </td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->tel ?? 'undefined' }}</td>
                                 <td>{{ $user->prefecture ?? 'undefined' }}</td>

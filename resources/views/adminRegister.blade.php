@@ -29,10 +29,6 @@
             <div class="main-aria">
                 <p class="page-title">アカウント一覧</p>
 
-                @isset($registered)
-                    <div class="success">登録に成功しました。メールアドレス：{{ $registered_email }}</div>
-                @endisset
-
                 <form method="POST"
                     action="{{ isset($user) ? route('admin.table.update', ['user' => $user->id]) : route('admin.register') }}">
                     @csrf

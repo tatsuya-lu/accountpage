@@ -36,7 +36,7 @@ class RegisterController extends Controller
 
     protected function adminRegisterDatabase(array $data)
     {
-        return AdminUser::create([
+        $user = AdminUser::create([
             'name' => $data['name'],
             'sub_name' => $data['sub_name'],
             'email' => $data['email'],
@@ -49,6 +49,12 @@ class RegisterController extends Controller
             'body' => $data['body'] !== null ? $data['body'] : '',
             'admin_level' => $data['admin_level'],
         ]);
+
+        if ($user) {
+            session()->flash('registered_message', 'アカウントが正常に登録されました。');
+        }
+    
+        return $user;
     }
 
     public function adminRegister(Request $request)
@@ -56,9 +62,11 @@ class RegisterController extends Controller
         $this->adminValidator($request->all())->validate();
 
         $user = $this->adminRegisterDatabase($request->all());
-
+    
         if ($user) {
-            return view('adminRegister', ['registered' => true, 'registered_email' => $user->email]);
+            session()->flash('registered_message', 'アカウントが正常に登録されました。');
+            session()->flash('registered_email', $user->email); 
+            return redirect()->route('admin.table'); 
         }
     }
 }

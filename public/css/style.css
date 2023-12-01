@@ -302,11 +302,11 @@ table td {
 
 .success {
     border-radius: 6px;
-    margin-left: 25px;
-    margin-right: 25px;
+    margin: 0 0 20px 50px;
     padding: 5px 0;
-    width: auto;
+    max-width: 90%;
     text-align: center;
+    align-items: center;
     background: #5bc8ac;
     color: #fff;
     font-size: 14px;
