@@ -58,6 +58,12 @@ class TableController extends Controller
         // ユーザー情報の更新
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->tel = $request->tel;
+        $user->prefecture = $request->prefecture;
+        $user->city = $request->city;
+        $user->street = $request->street;
+        $user->admin_level = $request->admin_level;
+        
 
         if ($request->filled('password')) {
             // パスワードのハッシュ化
