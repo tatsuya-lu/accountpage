@@ -1,0 +1,124 @@
+@charset "UTF-8";
+
+.Form {
+    margin-top: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 720px;
+}
+
+.Form-Item {
+    border-top: 1px solid #ddd;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.Form-Item:nth-child(5) {
+    border-bottom: 1px solid #ddd;
+}
+
+.Form-Item-Label {
+    width: 50%;
+    max-width: 248px;
+    letter-spacing: 0.05em;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.Form-Item-Label.isMsg {
+    margin-top: 8px;
+    margin-bottom: auto;
+}
+
+.Form-Item-Label-Required {
+    border-radius: 6px;
+    margin-right: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 48px;
+    display: inline-block;
+    text-align: center;
+    background: #5bc8ac;
+    color: #fff;
+    font-size: 14px;
+}
+
+.Form-Item-Input {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-left: 40px;
+    padding-left: 1em;
+    padding-right: 1em;
+    height: 48px;
+    flex: 1;
+    width: 50%;
+    max-width: 410px;
+    background: #eaedf2;
+    font-size: 18px;
+}
+
+.Form-Item-Textarea {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-left: 40px;
+    padding-left: 1em;
+    padding-right: 1em;
+    height: 216px;
+    flex: 1;
+    width: 100%;
+    max-width: 410px;
+    background: #eaedf2;
+    font-size: 18px;
+}
+.Form-Btn {
+    border-radius: 6px;
+    margin-top: 32px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 280px;
+    display: block;
+    letter-spacing: 0.05em;
+    background: #5bc8ac;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+}
+.error-message {
+    margin-left: 40px;
+    padding-left: 17em;
+    padding-right: 1em;
+    height: 48px;
+    max-width: 410px;
+    width: 100%;
+    color: red;
+    font-size: 15px;
+    white-space: nowrap;
+}
+
+.Form-Item-check {
+    margin-left: 40px;
+    padding-left: 1em;
+    padding-right: 1em;
+    height: 45px;
+    flex: 1;
+    width: 50%;
+    line-height: 45px;
+    max-width: 410px;
+    font-size: 18px;
+}
+
+.check-in-messege{
+    background-color:rgba(140, 190, 86, 0.4) ;
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(55, 83, 25);
+    height: 75px;
+    line-height: 75px;
+    padding-left: 10px;
+}

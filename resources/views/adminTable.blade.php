@@ -17,7 +17,9 @@
                 <a href="{{ route('admin.table') }}">
                     <p><span class="fa-solid fa-envelopes-bulk"></span>アカウント一覧</p>
                 </a>
-                <p><span class="fa-solid fa-envelopes-bulk"></span>お問い合わせ一覧</p>
+                <a href="{{ route('admin.inquiry.index') }}">
+                    <p><span class="fa-solid fa-envelopes-bulk"></span>お問い合わせ一覧</p>
+                </a>
             </div>
         </header>
 
