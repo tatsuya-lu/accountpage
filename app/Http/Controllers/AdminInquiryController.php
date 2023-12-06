@@ -39,10 +39,10 @@ class AdminInquiryController extends Controller
         return redirect()->route('admin.inquiry.index')->with('success', 'お問い合わせ情報が更新されました。');
     }
 
-    public function destroy(Post $inquiry)
-    {
-        $inquiry->delete();
+    // public function destroy(Post $inquiry)
+    // {
+    //     $inquiry->delete();
 
-        return redirect()->route('admin.inquiry.index')->with('success', 'お問い合わせ情報が削除されました。');
-    }
+    //     return redirect()->route('admin.inquiry.index')->with('success', 'お問い合わせ情報が削除されました。');
+    // }
 }

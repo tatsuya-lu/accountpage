@@ -45,9 +45,9 @@
                     @method('PUT')
                     <div class="Form">
 
-                        <div class="Form-Item">
-                            <label for="status" class="Form-Item-Label">ステータス</label>
-                            <select name="status" id="status">
+                        <div class="Inquiry-Item">
+                            <label for="status" class="Form-Item-Label sub_title">ステータス</label>
+                            <select name="status" id="status" class="Inquiry-Form-Item-Input">
                                 <option value="未対応" {{ $inquiry->status === '未対応' ? 'selected' : '' }}>未対応</option>
                                 <option value="対応中" {{ $inquiry->status === '対応中' ? 'selected' : '' }}>対応中</option>
                                 <option value="対応済み" {{ $inquiry->status === '対応済み' ? 'selected' : '' }}>対応済み
@@ -55,37 +55,46 @@
                             </select>
                         </div>
 
-                        <div class="Form-Item-Label isMsg">
-                            <label for="" class="Form-Item-Label">備考欄</label>
-                            <textarea name="comment" id="comment" class="Form-Item-Textarea">{{ $inquiry->comment }}</textarea>
+                        <div class="Inquiry-Item">
+                            <label for="body" class="Form-Item-Label sub_title">お問い合わせ内容</label>
+                            <p class="Inquiry-font">{{ $inquiry->body }}</p>
                         </div>
 
-                        <div class="Form-Item">
-                            <label for="body" class="Form-Item-Label">お問い合わせ内容:{{ $inquiry->body }}</label>
+                        <div class="Inquiry-Item">
+                            <label for="comment" class="Form-Item-Label sub_title">備考欄</label>
+                            <textarea name="comment" id="comment" class="Inquiry-Form-Item-Textarea">{{ $inquiry->comment }}</textarea>
                         </div>
 
-                        <div class="Form-Item">
-                            <label for="company" class="Form-Item-Label">氏名:{{ $inquiry->name }}</label>
+                        <div class="Inquiry-Item Inquiry-box">
+                            <p class="sub_title">お問い合わせ情報</p>
                         </div>
 
-                        <div class="Form-Item">
-                            <label for="company" class="Form-Item-Label">電話番号:{{ $inquiry->tel }}</label>
+                        <div class="Inquiry-Item">
+                            <label for="company" class="Form-Item-Label Inquiry-Label">会社名:{{ $inquiry->company }}</label>
                         </div>
 
-                        <div class="Form-Item">
-                            <label for="company" class="Form-Item-Label">メールアドレス:{{ $inquiry->email }}</label>
+                        <div class="Inquiry-Item">
+                            <label for="name" class="Form-Item-Label Inquiry-Label">氏名:{{ $inquiry->name }}</label>
                         </div>
 
-                        <div class="Form-Item">
-                            <label for="company" class="Form-Item-Label">生年月日:{{ $inquiry->birthday }}</label>
+                        <div class="Inquiry-Item">
+                            <label for="tel" class="Form-Item-Label Inquiry-Label">電話番号:{{ $inquiry->tel }}</label>
                         </div>
 
-                        <div class="Form-Item">
-                            <label for="company" class="Form-Item-Label">性別:{{ $inquiry->gender }}</label>
+                        <div class="Inquiry-Item">
+                            <label for="email" class="Form-Item-Label Inquiry-Label">メールアドレス:{{ $inquiry->email }}</label>
                         </div>
 
-                        <div class="Form-Item">
-                            <label for="company" class="Form-Item-Label">職業:{{ $inquiry->profession }}</label>
+                        <div class="Inquiry-Item">
+                            <label for="birthday" class="Form-Item-Label Inquiry-Label">生年月日:{{ $inquiry->birthday }}</label>
+                        </div>
+
+                        <div class="Inquiry-Item">
+                            <label for="gender" class="Form-Item-Label Inquiry-Label">性別:{{ $inquiry->gender }}</label>
+                        </div>
+
+                        <div class="Inquiry-Item">
+                            <label for="profession" class="Form-Item-Label Inquiry-Label">職業:{{ $inquiry->profession }}</label>
                         </div>
 
                         <input type="submit" class="Form-Btn" value="更新">

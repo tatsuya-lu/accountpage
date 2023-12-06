@@ -359,3 +359,146 @@ table td {
     background-color: #4ca594;
 }
 
+.sub_title {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(102, 99, 99);
+}
+
+.Inquiry-Item {
+    padding-top: 10px;
+    padding-bottom: 15px;
+    margin-left: 10px;
+}
+
+.Inquiry-Label {
+    max-width: max-content;
+
+}
+
+.Inquiry-Form-Item-Input {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding-left: 1em;
+    padding-right: 1em;
+    height: 45px;
+    flex: 1;
+    width: 100%;
+    max-width: 1500px;
+    background: #fff;
+    font-size: 18px;
+}
+
+.Inquiry-Form-Item-Textarea {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding-left: 1em;
+    padding-right: 1em;
+    height: 200px;
+    flex: 1;
+    width: 100%;
+    
+    background: #ffffff;
+    font-size: 18px;
+}
+
+.edit-main-aria {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.edit-form-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.edit-Form {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #a0a0a0;
+    border-radius: 3px;
+    background-color: #fff;
+}
+
+.edit-Form-Item {
+    margin-bottom: 20px;
+}
+
+.edit-Form-Item-Label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #5bc8ac;
+}
+
+.edit-Form-Item.isMsg {
+    margin-top: 8px;
+    margin-bottom: 10px;
+}
+
+.edit-Form-Item-Input,
+.edit-Form-Item-Textarea,
+.edit-Form-Btn {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+    background: #fff;
+    text-align: left;
+}
+
+.edit-Form-Btn {
+    background-color: #5bc8ac;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.edit-Form-Btn:hover {
+    background-color: #4ca594;
+}
+
+.sub_title {
+    font-size: 21px;
+    font-weight: bold;
+    color: rgb(102, 99, 99);
+}
+
+.Inquiry-Item {
+    padding-top: 10px;
+    padding-bottom: 15px;
+    margin-left: 10px;
+}
+
+.Inquiry-Label {
+    max-width: max-content;
+}
+
+.Inquiry-Form-Item-Input,
+.Inquiry-Form-Item-Textarea {
+    width: 100%;
+    max-width: 1625px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 18px;
+    background: #fff;
+    text-align: left;
+}
+
+.Inquiry-box {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.Inquiry-font {
+    font-size: 18px;
+}
