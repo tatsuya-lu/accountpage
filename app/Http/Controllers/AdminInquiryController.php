@@ -9,7 +9,8 @@ class AdminInquiryController extends Controller
 {
     public function index()
     {
-        $inquiries = Post::all();
+        // $inquiries = Post::all();
+        $inquiries = Post::paginate(10);
         return view('adminInquirylist', ['inquiries' => $inquiries]);
     }
 

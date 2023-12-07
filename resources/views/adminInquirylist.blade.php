@@ -74,6 +74,7 @@
                         @endforeach
                     </table>
                 </div>
+                {{ $inquiries->links() }}
             </div>
         </main>
     </div>
