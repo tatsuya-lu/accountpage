@@ -187,6 +187,21 @@ return [
         'admin_level' => [
             'required' => 'アカウントの種類は必須項目です。',
         ],
+        'company' => [
+            'required' => '会社名は必須項目です。',
+        ],
+        'birthday' => [
+            'required' => '誕生日は必須項目です。',
+        ],
+        'gender' => [
+            'required' => '性別は必須項目です。',
+        ],
+        'profession' => [
+            'required' => '職業は必須項目です。',
+        ],
+        'body' => [
+            'required' => 'お問い合わせ内容は必須項目です。',
+        ],
     ],
 
     /*

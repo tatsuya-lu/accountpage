@@ -23,7 +23,7 @@ class ContactsController extends Controller
         $request->validate([
             'company' => 'required|max:20',
             'name' => 'required',
-            'tel' => 'required|regex:/^[0-9]{3}-[0-9]{4}-[0-9]{4}$/',
+            'tel' => 'required|regex:/^[0-9]{3}[0-9]{4}[0-9]{4}$/',
             'email' => 'required|email',
             'birthday' => 'required',
             'gender' => 'required|in:男,女',
@@ -48,7 +48,7 @@ class ContactsController extends Controller
             [
                 'company' => 'required|max:20',
                 'name' => 'required',
-                'tel' => 'required|regex:/^[0-9]{3}-[0-9]{4}-[0-9]{4}$/',
+                'tel' => 'required|regex:/^[0-9]{3}[0-9]{4}[0-9]{4}$/',
                 'email' => 'required|email',
                 'birthday' => 'required',
                 'gender' => 'required|in:男,女',
