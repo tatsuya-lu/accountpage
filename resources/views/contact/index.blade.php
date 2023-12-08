@@ -66,10 +66,10 @@
                 <label class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>性別</label>
                 <div class="Form-Item-check">
                     <input type="radio" name="gender" value="男" {{ old('gender') == '男' ? 'checked' : '' }}>
-                    <label for="male">男</label>
+                    <label for="man">男</label>
 
                     <input type="radio" name="gender" value="女" {{ old('gender') == '女' ? 'checked' : '' }}>
-                    <label for="female">女</label>
+                    <label for="women">女</label>
                 </div>
 
                 @if ($errors->has('gender'))
