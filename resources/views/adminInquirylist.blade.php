@@ -74,7 +74,7 @@
                         @endforeach
                     </table>
                 </div>
-                {{ $inquiries->links() }}
+                <div class="pagenation">{{ $inquiries->links() }}</div>
             </div>
         </main>
     </div>

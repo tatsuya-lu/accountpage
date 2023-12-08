@@ -502,3 +502,9 @@ table td {
 .Inquiry-font {
     font-size: 18px;
 }
+
+.pagenation {
+    text-align: right;
+    margin-top: 25px;
+    margin-right: 121px;
+}
