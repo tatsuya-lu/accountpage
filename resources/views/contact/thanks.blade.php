@@ -2,12 +2,10 @@
 <html lang="ja">
 
 <head>
-    {{-- @extends('layouts.app') --}}
     <link rel="stylesheet" href="../css/contact-style.css">
 </head>
 
 <body>
-    {{-- @section('contact') --}}
         <div class="Form">
             <p class="check-in-messege">送信完了しました。</p>
             
@@ -54,7 +52,6 @@
             <a href="{{ route('contact.index') }}"><button type="button" class="Form-Btn">戻る</button></a>
 
         </div>
-    {{-- @endsection --}}
 </body>
 
 

@@ -2,13 +2,10 @@
 <html lang="ja">
 
 <head>
-    {{-- @extends('layouts.app') --}}
     <link rel="stylesheet" href="css/contact-style.css">
 </head>
 
 <body>
-
-    {{-- @section('contact') --}}
     <div class="Form">
         <form method="POST" action="{{ route('contact.confirm') }}">
             @csrf
@@ -103,7 +100,6 @@
             <button type="submit" class="Form-Btn" value="確認する">確認する</button>
         </form>
     </div>
-    {{-- @endsection --}}
 </body>
 
 </html>

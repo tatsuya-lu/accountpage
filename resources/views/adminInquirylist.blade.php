@@ -43,7 +43,6 @@
                     <table class="account">
                         <tr>
                             <th>編集</th>
-                            {{-- <th>削除</th> --}}
                             <th>ステータス</th>
                             <th>会社名</th>
                             <th>氏名</th>
@@ -56,16 +55,6 @@
                                         <span class="fa-solid fa-pen-to-square"></span>
                                     </a>
                                 </td>
-                                {{-- <td class="table-center">
-                                    <form method="POST" action="{{ route('admin.inquiry.destroy', $inquiry->id) }}"
-                                        onsubmit="return confirm('削除します。よろしいですか？')">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="no-border">
-                                            <span class="fa-solid fa-trash-can"></span>
-                                        </button>
-                                    </form>
-                                </td> --}}
                                 <td>{{ $inquiry->status }}</td>
                                 <td>{{ $inquiry->company }}</td>
                                 <td>{{ $inquiry->name }}</td>

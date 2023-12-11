@@ -2,11 +2,10 @@
 <html lang="ja">
 
 <head>
-    {{-- @extends('layouts.app') --}}
     <link rel="stylesheet" href="../css/contact-style.css">
 </head>
 
-{{-- @section('contact') --}}
+
     <div class="Form">
 
         <form method="POST" action="{{ route('contact.send') }}">
@@ -66,6 +65,5 @@
 
     </div>
     </form>
-{{-- @endsection --}}
 
 </html>

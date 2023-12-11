@@ -102,8 +102,6 @@ class TableController extends Controller
 
     public function destroy(AdminUser $user)
     {
-        // ユーザー削除前にログアウトする
-        // auth('admin')->logout();
 
         // ユーザー削除
         $user->delete();

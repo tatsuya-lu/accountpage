@@ -56,8 +56,6 @@ Route::get('/admin/register', [\App\Http\Controllers\RegisterController::class, 
 
 Route::post('/admin/register', [\App\Http\Controllers\RegisterController::class, 'adminRegister'])->middleware('auth:admin')->name('admin.register');
 
-// Route::get('/admin/table', [App\Http\Controllers\TableController::class, 'adminTable'])->name('admin.table');
-
 Route::prefix('admin')->middleware(['auth:admin'])->group(function () {
     // 既存のアカウント一覧表示
     Route::get('/table', [TableController::class, 'adminTable'])->name('admin.table');
