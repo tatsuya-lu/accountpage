@@ -8,6 +8,8 @@ use App\Models\AdminUser;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Foundation\Http\FormRequest;
+use Config;
 
 class RegisterController extends Controller
 {
@@ -16,6 +18,12 @@ class RegisterController extends Controller
     public function adminRegisterForm(Request $request)
     {
         return view('adminRegister');
+    }
+
+    public function __construct()
+    {
+        $this->prefectures = array_keys(Config::get('const.prefecture'));
+        $this->adminLevels = array_keys(Config::get('const.admin_level'));
     }
 
     protected function adminValidator(array $data)
@@ -27,10 +35,10 @@ class RegisterController extends Controller
             'password' => ['required', 'confirmed', Password::min(8)],
             'tel' => ['required','regex:/^[0-9]{3}[0-9]{4}[0-9]{4}$/'],
             'post_code' => ['required','regex:/^[0-9]{3}[0-9]{4}$/'],
-            'prefecture'=> ['required','in:北海道,青森県,岩手県,宮城県,秋田県,山形県,福島県,茨城県,栃木県,群馬県,埼玉県,千葉県,東京都,神奈川県,新潟県,富山県,石川県,福井県,山梨県,長野県,岐阜県,静岡県,愛知県,三重県,滋賀県,京都府,大阪府,兵庫県,奈良県,和歌山県,鳥取県,島根県,岡山県,広島県,山口県,徳島県,香川県,愛媛県,高知県,福岡県,佐賀県,長崎県,熊本県,大分県,宮崎県,鹿児島県,沖縄県'],
+            'prefecture'=> ['required', 'in:' . implode(',', $this->prefectures)],
             'city'=> ['required','string'],
             'street'=> ['required','string'],
-            'admin_level' => ['required', 'in:0,1'],
+            'admin_level' => ['required', 'in:' . implode(',', $this->adminLevels)],
         ]);
     }
 
@@ -47,7 +55,7 @@ class RegisterController extends Controller
             'city'=> $data['city'],
             'street'=> $data['street'],
             'body' => $data['body'] !== null ? $data['body'] : '',
-            'admin_level' => $data['admin_level'],
+            'admin_level' => intval($data['admin_level']),
         ]);
 
         if ($user) {

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Mail\ContactsSendmail;
 use App\Models\Post;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Foundation\Http\FormRequest;
+use Config;
 
 
 class ContactsController extends Controller
@@ -14,6 +16,12 @@ class ContactsController extends Controller
     {
         //入力ページを表示
         return view('contact.index');
+    }
+
+    public function __construct()
+    {
+        $this->genderes = array_keys(Config::get('const.gender'));
+        $this->professions = array_keys(Config::get('const.profession'));
     }
 
     public function confirm(Request $request)
@@ -26,8 +34,8 @@ class ContactsController extends Controller
             'tel' => 'required|regex:/^[0-9]{3}[0-9]{4}[0-9]{4}$/',
             'email' => 'required|email',
             'birthday' => 'required',
-            'gender' => 'required|in:男,女',
-            'profession' => 'required|in:公務員,会社員,エンジニア',
+            'gender' => 'required|in:' . implode(',', array_keys(config('const.gender'))),
+            'profession' => 'required|in:' . implode(',', array_keys(config('const.profession'))),
             'body' => 'required',
         ]);
 
@@ -51,8 +59,8 @@ class ContactsController extends Controller
                 'tel' => 'required|regex:/^[0-9]{3}[0-9]{4}[0-9]{4}$/',
                 'email' => 'required|email',
                 'birthday' => 'required',
-                'gender' => 'required|in:男,女',
-                'profession' => 'required|in:公務員,会社員,エンジニア',
+                'gender' => 'required|in:' . implode(',', array_keys(config('const.gender'))),
+                'profession' => 'required|in:' . implode(',', array_keys(config('const.profession'))),
                 'body' => 'required',
             ]
         );

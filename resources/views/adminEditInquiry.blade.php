@@ -48,10 +48,11 @@
                         <div class="Inquiry-Item">
                             <label for="status" class="Form-Item-Label sub_title">ステータス</label>
                             <select name="status" id="status" class="Inquiry-Form-Item-Input">
-                                <option value="未対応" {{ $inquiry->status === '未対応' ? 'selected' : '' }}>未対応</option>
-                                <option value="対応中" {{ $inquiry->status === '対応中' ? 'selected' : '' }}>対応中</option>
-                                <option value="対応済み" {{ $inquiry->status === '対応済み' ? 'selected' : '' }}>対応済み
-                                </option>
+                                @foreach (config('const.status') as $statusKey => $statusLabel)
+                                    <option value="{{ $statusKey }}" {{ $inquiry->status === $statusKey ? 'selected' : '' }}>
+                                        {{ $statusLabel }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
 

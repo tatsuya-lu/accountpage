@@ -88,7 +88,7 @@
                                 </td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->tel ?? 'undefined' }}</td>
-                                <td>{{ $user->prefecture ?? 'undefined' }}</td>
+                                <td>{{ config('const.prefecture.' . $user->prefecture) ?? 'undefined' }}</td>
                                 <td>{{ $user->city ?? 'undefined' }}</td>
                                 <td>{{ $user->street ?? 'undefined' }}</td>
                             </tr>

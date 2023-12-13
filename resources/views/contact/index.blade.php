@@ -62,11 +62,10 @@
             <div class="Form-Item">
                 <label class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>性別</label>
                 <div class="Form-Item-check">
-                    <input type="radio" name="gender" value="男" {{ old('gender') == '男' ? 'checked' : '' }}>
-                    <label for="man">男</label>
-
-                    <input type="radio" name="gender" value="女" {{ old('gender') == '女' ? 'checked' : '' }}>
-                    <label for="women">女</label>
+                    @foreach(config('const.gender') as $value => $label)
+                        <input type="radio" name="gender" value="{{ $value }}" {{ old('gender') == $value ? 'checked' : '' }}>
+                        <label for="{{ $value }}">{{ $label }}</label>
+                    @endforeach
                 </div>
 
                 @if ($errors->has('gender'))
@@ -76,13 +75,13 @@
 
             <div class="Form-Item">
                 <label class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>職業</label>
-                <select name="profession" value="{{ old('profession') }}" class="Form-Item-Input">
+                <select name="profession" class="Form-Item-Input">
                     <option value="">職業を選択してください</option>
-                    <option value="公務員" @if (old('profession') == '公務員') selected @endif>公務員</option>
-                    <option value="会社員" @if (old('profession') == '会社員') selected @endif>会社員</option>
-                    <option value="エンジニア" @if (old('profession') == 'エンジニア') selected @endif>エンジニア</option>
+                    @foreach(config('const.profession') as $value => $label)
+                        <option value="{{ $value }}" {{ old('profession') == $value ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
                 </select>
-
+            
                 @if ($errors->has('profession'))
                     <p class="error-message">{{ $errors->first('profession') }}</p>
                 @endif

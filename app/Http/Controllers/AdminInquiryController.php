@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Foundation\Http\FormRequest;
+use Config;
 
 class AdminInquiryController extends Controller
 {
@@ -18,10 +20,15 @@ class AdminInquiryController extends Controller
         return view('adminEditInquiry', ['inquiry' => $inquiry]);
     }
 
+    public function __construct()
+    {
+        $this->statuses = array_keys(Config::get('const.status'));
+    }
+
     public function update(Request $request, Post $inquiry)
     {
         $request->validate([
-            'status' => 'required|in:未対応,対応中,対応済み',
+            'status' => 'required|in:' . implode(',', array_keys(config('const.status'))),
             'comment' => 'nullable|string',
         ]);
 

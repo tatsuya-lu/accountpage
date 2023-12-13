@@ -1,7 +1,14 @@
 <?php
 return [
-    'gender' => ['men' => '男', 'women' => '女'],
-    'profession' => ['civil_servant' => '公務員', 'office_worker' => '会社員', 'engineer' => 'エンジニア'],
+    'gender' => [
+        'men' => '男',
+        'women' => '女'
+    ],
+    'profession' => [
+        'civil_servant' => '公務員',
+        'office_worker' => '会社員',
+        'engineer' => 'エンジニア'
+    ],
     'prefecture' => [
         'Hokkaido' => '北海道',
         'Aomori' => '青森県',
@@ -51,6 +58,13 @@ return [
         'Kagoshima' => '鹿児島県',
         'Okinawa' => '沖縄県',
     ],
-    'status' => ['default' => '未対応', 'checking' => '対応中', 'checked' => '対応済み'],
-    'admin_level' => ['管理者' => '1', '社員' => '0'],
+    'status' => [
+        '未対応' => '未対応',
+        '対応中' => '対応中',
+        '対応済み' => '対応済み',
+    ],
+    'admin_level' => [
+        '0' => '社員',
+        '1' => '管理者',
+    ],
 ];

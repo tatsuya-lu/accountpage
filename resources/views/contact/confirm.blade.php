@@ -43,13 +43,13 @@
 
             <div class="Form-Item">
                 <label class="Form-Item-Label">性別</label>
-                {{ $inputs['gender'] }}
+                {{ config('const.gender.' . $inputs['gender']) }}
                 <input class="Form-Item-Input" name="gender" value="{{ $inputs['gender'] }}" type="hidden">
             </div>
-
+            
             <div class="Form-Item">
                 <label class="Form-Item-Label">職業</label>
-                {{ $inputs['profession'] }}
+                {{ config('const.profession.' . $inputs['profession']) }}
                 <input class="Form-Item-Input" name="profession" value="{{ $inputs['profession'] }}" type="hidden">
             </div>
 
