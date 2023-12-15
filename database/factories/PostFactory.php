@@ -20,7 +20,7 @@ class PostFactory extends Factory
 
         $genders = array_keys(Config::get('const.gender'));
         $professions = array_keys(Config::get('const.profession'));
-        $statuses = array_keys(Config::get('const.post_status'));
+        $statuses = array_keys(Config::get('const.status'));
 
         return [
             'company' => $this->faker->company,
@@ -28,10 +28,10 @@ class PostFactory extends Factory
             'tel' => $phoneNumberWithoutHyphen,
             'email' => $this->faker->unique()->safeEmail,
             'birthday' => $this->faker->date,
-            'gender' => $this->faker->randomElement(['男', '女']),
-            'profession' => $this->faker->randomElement(['公務員', '会社員', 'エンジニア']),
+            'gender' => $this->faker->randomElement(array_values(Config::get('const.gender'))),
+            'profession' => $this->faker->randomElement(array_values(Config::get('const.profession'))),
             'body' => 'これはお問い合わせの本文です。',
-            'status' => $this->faker->randomElement(['未対応', '対応中', '対応済み']),
+            'status' => $this->faker->randomElement(array_values(Config::get('const.status'))),
             'comment' => 'これは備考欄です。',
         ];
     }

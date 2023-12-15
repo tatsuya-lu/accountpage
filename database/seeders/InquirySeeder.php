@@ -21,14 +21,18 @@ class InquirySeeder extends Seeder
         // シーダーの内容をここに追加
         \App\Models\Post::factory()->count(15)->create([
             'gender' => function () {
-                return $this->faker->randomElement(array_keys(Config::get('const.gender')));
+                $faker = \Faker\Factory::create();
+                return $faker->randomElement(array_values(Config::get('const.gender')));
             },
             'profession' => function () {
-                return $this->faker->randomElement(array_keys(Config::get('const.profession')));
+                $faker = \Faker\Factory::create();
+                return $faker->randomElement(array_values(Config::get('const.profession')));
             },
             'status' => function () {
-                return $this->faker->randomElement(array_keys(Config::get('const.post_status')));
+                $faker = \Faker\Factory::create();
+                return $faker->randomElement(array_values(Config::get('const.status')));
             },
         ]);
     }
 }
+
