@@ -22,13 +22,10 @@ class ContactsController extends Controller
 
         $validatedData = $request->validated();
 
-        //フォームからの入力値をすべて取得
-        $inputs = $request->all();
-
         //確認ページに表示
         //入力値を因数に渡す
         return view('contact.confirm', [
-            'inputs' => $inputs,
+            'inputs' => $validatedData,
         ]);
     }
 

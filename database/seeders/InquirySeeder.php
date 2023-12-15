@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Factories\Sequence;
+use Config;
 
 class InquirySeeder extends Seeder
 {
@@ -18,6 +19,16 @@ class InquirySeeder extends Seeder
         DB::table('posts')->truncate();
 
         // シーダーの内容をここに追加
-        \App\Models\Post::factory()->count(15)->create();
+        \App\Models\Post::factory()->count(15)->create([
+            'gender' => function () {
+                return $this->faker->randomElement(array_keys(Config::get('const.gender')));
+            },
+            'profession' => function () {
+                return $this->faker->randomElement(array_keys(Config::get('const.profession')));
+            },
+            'status' => function () {
+                return $this->faker->randomElement(array_keys(Config::get('const.post_status')));
+            },
+        ]);
     }
 }

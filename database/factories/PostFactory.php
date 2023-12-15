@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Post;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Config;
 
 class PostFactory extends Factory
 {
@@ -16,6 +17,10 @@ class PostFactory extends Factory
     {
         $phoneNumber = $this->faker->phoneNumber;
         $phoneNumberWithoutHyphen = str_replace('-', '', $phoneNumber);
+
+        $genders = array_keys(Config::get('const.gender'));
+        $professions = array_keys(Config::get('const.profession'));
+        $statuses = array_keys(Config::get('const.post_status'));
 
         return [
             'company' => $this->faker->company,
