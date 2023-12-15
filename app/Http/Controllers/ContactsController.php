@@ -17,14 +17,11 @@ class ContactsController extends Controller
         return view('contact.index');
     }
 
-    public function __construct()
+    public function confirm(ContactRequest $request)
     {
-        $this->genderes = array_keys(Config::get('const.gender'));
-        $this->professions = array_keys(Config::get('const.profession'));
-    }
 
-    public function confirm(Request $request)
-    {
+        $validatedData = $request->validated();
+
         //フォームからの入力値をすべて取得
         $inputs = $request->all();
 
@@ -35,8 +32,9 @@ class ContactsController extends Controller
         ]);
     }
 
-    public function send(Request $request)
+    public function send(ContactRequest $request)
     {
+
         //フォームから受け取ったactionの値を取得
         $action = $request->input('action');
 

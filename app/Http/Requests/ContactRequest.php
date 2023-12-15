@@ -29,8 +29,8 @@ class ContactRequest extends FormRequest
             'tel' => 'required|regex:/^[0-9]{3}[0-9]{4}[0-9]{4}$/',
             'email' => 'required|email',
             'birthday' => 'required',
-            'gender' => 'required|in:' . implode(',', array_keys(config('const.gender'))),
-            'profession' => 'required|in:' . implode(',', array_keys(config('const.profession'))),
+            'gender' => 'required',
+            'profession' => 'required',
             'body' => 'required',
         ];
     }
@@ -47,9 +47,7 @@ class ContactRequest extends FormRequest
             'email.email' => 'メールアドレスの形式が正しくありません。',
             'birthday.required' => '生年月日は必須項目です。',
             'gender.required' => '性別は必須項目です。',
-            'gender.in' => '無効な性別が選択されました。',
             'profession.required' => '職業は必須項目です。',
-            'profession.in' => '無効な職業が選択されました。',
             'body.required' => 'お問い合わせ内容は必須項目です。',
         ];
     }

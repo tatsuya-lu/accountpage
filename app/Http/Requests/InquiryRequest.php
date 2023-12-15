@@ -24,7 +24,7 @@ class InquiryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'status' => ['required', Rule::in(array_keys(config('const.status')))],
+            'status' => 'required',
             'comment' => 'nullable|string',
         ];
     }
@@ -33,7 +33,6 @@ class InquiryRequest extends FormRequest
     {
         return [
             'status.required' => 'ステータスは必須項目です。',
-            'status.in' => '無効なステータスが選択されました。',
             'comment.string' => 'コメントは文字列で指定してください。',
         ];
     }

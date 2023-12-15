@@ -19,12 +19,7 @@ class AdminInquiryController extends Controller
         return view('adminEditInquiry', ['inquiry' => $inquiry]);
     }
 
-    public function __construct()
-    {
-        $this->statuses = array_keys(Config::get('const.status'));
-    }
-
-    public function update(Request $request, Post $inquiry)
+    public function update(InquiryRequest $request, Post $inquiry)
     {
         $inquiry->update($request->only(['status', 'comment']));
 

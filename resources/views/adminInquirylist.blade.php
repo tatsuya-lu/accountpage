@@ -55,7 +55,7 @@
                                         <span class="fa-solid fa-pen-to-square"></span>
                                     </a>
                                 </td>
-                                <td>{{ $inquiry->status }}</td>
+                                <td>{{ config('const.status')[$inquiry->status] ?? $inquiry->status }}</td>
                                 <td>{{ $inquiry->company }}</td>
                                 <td>{{ $inquiry->name }}</td>
                                 <td>{{ $inquiry->tel }}</td>
