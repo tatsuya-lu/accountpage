@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use App\Mail\ContactsSendmail;
 use App\Models\Post;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Foundation\Http\FormRequest;
-use Config;
+use App\Http\Requests\ContactRequest;
 
 
 class ContactsController extends Controller
@@ -26,19 +25,6 @@ class ContactsController extends Controller
 
     public function confirm(Request $request)
     {
-        //バリデーションルールを定義
-        //引っかかるとエラーを起こしてくれる
-        $request->validate([
-            'company' => 'required|max:20',
-            'name' => 'required',
-            'tel' => 'required|regex:/^[0-9]{3}[0-9]{4}[0-9]{4}$/',
-            'email' => 'required|email',
-            'birthday' => 'required',
-            'gender' => 'required|in:' . implode(',', array_keys(config('const.gender'))),
-            'profession' => 'required|in:' . implode(',', array_keys(config('const.profession'))),
-            'body' => 'required',
-        ]);
-
         //フォームからの入力値をすべて取得
         $inputs = $request->all();
 
@@ -51,20 +37,6 @@ class ContactsController extends Controller
 
     public function send(Request $request)
     {
-        //バリデーションを実行（結果に問題があれば処理を中断してエラーを返す）
-        $request->validate(
-            [
-                'company' => 'required|max:20',
-                'name' => 'required',
-                'tel' => 'required|regex:/^[0-9]{3}[0-9]{4}[0-9]{4}$/',
-                'email' => 'required|email',
-                'birthday' => 'required',
-                'gender' => 'required|in:' . implode(',', array_keys(config('const.gender'))),
-                'profession' => 'required|in:' . implode(',', array_keys(config('const.profession'))),
-                'body' => 'required',
-            ]
-        );
-
         //フォームから受け取ったactionの値を取得
         $action = $request->input('action');
 
