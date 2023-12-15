@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\AdminUser;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\View;
-use Illuminate\Foundation\Http\FormRequest;
-use Config;
+use App\Http\Requests\TableRequest;
 
 class TableController extends Controller
 {
@@ -18,27 +17,8 @@ class TableController extends Controller
         return view('adminTable', ['users' => $users]);
     }
 
-    public function __construct()
+    public function store(TableRequest $request)
     {
-        $this->prefectures = array_keys(Config::get('const.prefecture'));
-        $this->adminLevels = array_keys(Config::get('const.admin_level'));
-    }
-
-    public function store(Request $request)
-    {
-        // バリデーション
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:admin_users|max:255',
-            'password' => 'required|string|min:8',
-            'sub_name' => 'required|string|max:255',
-            'tel' => 'required|regex:/^[0-9]{3}[0-9]{4}[0-9]{4}$/',
-            'post_code' => 'required|regex:/^[0-9]{3}[0-9]{4}$/',
-            'prefecture' => 'required|in:' . implode(',', array_keys(config('const.prefecture'))),
-            'city' => 'required|string',
-            'street' => 'required|string',
-            'admin_level' => 'required|in:' . implode(',', array_keys(config('const.admin_level'))),
-        ]);
 
         // パスワードのハッシュ化
         $hashedPassword = bcrypt($request->password);
@@ -60,26 +40,8 @@ class TableController extends Controller
         return ['result' => true];
     }
 
-    public function update(Request $request, AdminUser $user)
+    public function update(TableRequest $request, AdminUser $user)
     {
-        // バリデーション
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => [
-                'required',
-                'email',
-                Rule::unique('admin_users')->ignore($user->id),
-                'max:255',
-            ],
-            'password' => 'nullable|string|min:8',
-            'sub_name' => 'required|string|max:255',
-            'tel' => 'required|regex:/^[0-9]{3}[0-9]{4}[0-9]{4}$/',
-            'post_code' => 'required|regex:/^[0-9]{3}[0-9]{4}$/',
-            'prefecture' => 'required|in:' . implode(',', array_keys(config('const.prefecture'))),
-            'city' => 'required|string',
-            'street' => 'required|string',
-            'admin_level' => 'required|in:' . implode(',', array_keys(config('const.admin_level'))),
-        ]);
 
         // ユーザー情報の更新
         $user->name = $request->name;

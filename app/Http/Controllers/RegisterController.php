@@ -8,8 +8,7 @@ use App\Models\AdminUser;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Foundation\Http\FormRequest;
-use Config;
+use App\Http\Requests\RegisterRequest;
 
 class RegisterController extends Controller
 {
@@ -18,12 +17,6 @@ class RegisterController extends Controller
     public function adminRegisterForm(Request $request)
     {
         return view('adminRegister');
-    }
-
-    public function __construct()
-    {
-        $this->prefectures = array_keys(Config::get('const.prefecture'));
-        $this->adminLevels = array_keys(Config::get('const.admin_level'));
     }
 
     protected function adminValidator(array $data)
@@ -65,9 +58,8 @@ class RegisterController extends Controller
         return $user;
     }
 
-    public function adminRegister(Request $request)
+    public function adminRegister(RegisterRequest $request)
     {
-        $this->adminValidator($request->all())->validate();
 
         $user = $this->adminRegisterDatabase($request->all());
     
