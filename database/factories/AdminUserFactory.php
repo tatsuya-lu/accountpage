@@ -40,7 +40,7 @@ class AdminUserFactory extends Factory
             'password' => Hash::make('password'),
             'tel' => $phoneNumberWithoutHyphen,
             'post_code' => $postCodeWithoutHyphen,
-            'prefecture' => $this->faker->randomElement(array_values(Config::get('const.prefecture'))),
+            'prefecture' => $this->faker->randomElement(array_keys(Config::get('const.prefecture'))),
             'city' => $this->faker->city,
             'street' => $this->faker->streetAddress,
             'body' => 'これは備考欄です。',
