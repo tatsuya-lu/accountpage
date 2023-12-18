@@ -15,7 +15,7 @@ class PostFactory extends Factory
      */
     public function definition()
     {
-        $phoneNumber = $this->faker->phoneNumber;
+        $phoneNumber = $this->faker->numerify('###########');
         $phoneNumberWithoutHyphen = str_replace('-', '', $phoneNumber);
 
         $genders = array_keys(Config::get('const.gender'));
