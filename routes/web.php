@@ -52,9 +52,9 @@ Route::get('/admin/dashboard', function () {
     return view('adminDashboard');
 })->middleware('auth:admin')->name('admin.dashboard');
 
-Route::get('/admin/register', [\App\Http\Controllers\RegisterController::class, 'adminRegisterForm'])->middleware('auth:admin');
+// Route::get('/admin/register', [\App\Http\Controllers\RegisterController::class, 'adminRegisterForm'])->middleware('auth:admin');
 
-Route::post('/admin/register', [\App\Http\Controllers\RegisterController::class, 'adminRegister'])->middleware('auth:admin')->name('admin.register');
+// Route::post('/admin/register', [\App\Http\Controllers\RegisterController::class, 'adminRegister'])->middleware('auth:admin')->name('admin.register');
 
 Route::prefix('admin')->middleware(['auth:admin'])->group(function () {
     // 既存のアカウント一覧表示
@@ -68,6 +68,9 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function () {
 
     // アカウント削除処理
     Route::delete('/table/{user}', [TableController::class, 'destroy'])->name('admin.table.destroy');
+
+    Route::get('/table/register', [TableController::class, 'adminRegisterForm'])->name('admin.table.register.form');
+    Route::post('/table/register', [TableController::class, 'adminRegister'])->name('admin.table.register');
 
     // お問い合わせ一覧表示
     Route::get('/inquiry', [AdminInquiryController::class, 'index'])->name('admin.inquiry.index');

@@ -32,7 +32,7 @@
                 <p class="page-title">アカウント一覧</p>
 
                 <form method="POST"
-                    action="{{ isset($user) ? route('admin.table.update', ['user' => $user->id]) : route('admin.register') }}">
+                    action="{{ isset($user) ? route('admin.table.update', ['user' => $user->id]) : route('admin.table.register.form') }}">
                     @csrf
                     @if (isset($user))
                         @method('PUT')

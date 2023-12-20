@@ -30,7 +30,8 @@ class TableRequest extends FormRequest
             'email' => [
                 'required',
                 'email',
-                Rule::unique('admin_users')->ignore($this->route('user')),
+                // Rule::unique('admin_users')->ignore($this->route('user')),
+                Rule::unique('admin_users'),
                 'max:255',
             ],
             'password' => 'nullable|string|min:8',

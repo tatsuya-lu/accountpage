@@ -30,7 +30,7 @@
             <div class="main-aria">
                 <div class="table-title">
                     <p class="page-title">アカウント一覧</p>
-                    <a href="{{ route('admin.register') }}">
+                    <a href="{{ route('admin.table.register.form') }}">
                         <p class="regist-btn"><span class="fa-solid fa-circle-plus"></span>新規作成</p>
                     </a>
                 </div>
