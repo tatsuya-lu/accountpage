@@ -48,17 +48,6 @@ class TableController extends Controller
         ]);
     }
 
-    // public function store(Request $request)
-    // {
-    //     // フォームからのリクエストを取得
-    //     $requestData = $request->all();
-
-    //     // 都道府県が選択されている場合のみ変換
-    //     if (isset($requestData['prefecture'])) {
-    //         $requestData['prefecture'] = array_search($requestData['prefecture'], Config::get('const.prefecture'));
-    //     }
-    // }
-
     protected function adminRegisterDatabase(array $data)
     {
         $user = AdminUser::create([
@@ -84,13 +73,14 @@ class TableController extends Controller
 
     public function adminRegister(TableRequest $request)
     {
-
         $user = $this->adminRegisterDatabase($request->all());
-
+    
         if ($user) {
             session()->flash('registered_message', 'アカウントが正常に登録されました。');
             session()->flash('registered_email', $user->email);
             return redirect()->route('admin.table');
+        } else {
+            return redirect()->route('admin.table')->with('error', 'ユーザーの登録に失敗しました。');
         }
     }
 
