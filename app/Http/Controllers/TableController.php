@@ -23,28 +23,17 @@ class TableController extends Controller
 
     public function __construct()
     {
-        $this->prefectures = array_keys(Config::get('const.prefecture'));
-        $this->adminLevels = array_keys(Config::get('const.admin_level'));
+        $this->prefectures = config('const.prefecture');
+        $this->adminLevels = config('const.admin_level');
+
+        view()->share(['prefectures' => $this->prefectures, 'adminLevels' => $this->adminLevels]);
     }
 
     public function adminRegisterForm(Request $request)
     {
-        return view('adminRegister');
-    }
-
-    protected function adminValidator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'sub_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:App\Models\AdminUser'],
-            'password' => ['required', 'confirmed', Password::min(8)],
-            'tel' => ['required', 'regex:/^[0-9]{3}[0-9]{4}[0-9]{4}$/'],
-            'post_code' => ['required', 'regex:/^[0-9]{3}[0-9]{4}$/'],
-            'prefecture' => ['required', 'in:' . implode(',', $this->prefectures)],
-            'city' => ['required', 'string'],
-            'street' => ['required', 'string'],
-            'admin_level' => ['required', 'in:' . implode(',', $this->adminLevels)],
+        return view('adminRegister', [
+            'prefectures' => $this->prefectures,
+            'adminLevels' => $this->adminLevels,
         ]);
     }
 
@@ -90,37 +79,6 @@ class TableController extends Controller
         return view('adminTable', ['users' => $users]);
     }
 
-    public function store(TableRequest $request)
-    {
-
-        // フォームからのリクエストを取得
-        $requestData = $request->all();
-
-        // 都道府県が選択されている場合のみ変換
-        if (isset($requestData['prefecture'])) {
-            $requestData['prefecture'] = array_search($requestData['prefecture'], Config::get('const.prefecture'));
-        }
-
-        // パスワードのハッシュ化
-        $hashedPassword = bcrypt($request->password);
-
-        // ユーザーの作成
-        $user = AdminUser::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $hashedPassword,
-            'sub_name' => $request->sub_name,
-            'tel' => $request->tel,
-            'post_code' => $request->post_code,
-            'prefecture' => $request->prefecture,
-            'city' => $request->city,
-            'street' => $request->street,
-            'admin_level' => $request->admin_level,
-        ]);
-
-        return ['result' => true];
-    }
-
     public function update(TableRequest $request, AdminUser $user)
     {
 
@@ -148,7 +106,11 @@ class TableController extends Controller
 
     public function edit(AdminUser $user)
     {
-        return View::make('adminRegister', compact('user'));
+        return view('adminRegister', [
+            'user' => $user,
+            'prefectures' => $this->prefectures,
+            'adminLevels' => $this->adminLevels,
+        ]);
     }
 
     public function destroy(AdminUser $user)

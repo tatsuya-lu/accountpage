@@ -31,7 +31,8 @@
             <div class="main-aria">
                 <p class="page-title">アカウント一覧</p>
 
-                <form method="POST" action="{{ isset($user) ? route('admin.table.update', ['user' => $user->id]) : route('admin.table.register.form') }}">
+                <form method="POST"
+                    action="{{ isset($user) ? route('admin.table.update', ['user' => $user->id]) : route('admin.table.register.form') }}">
                     @csrf
                     @if (isset($user))
                         @method('PUT')
@@ -116,7 +117,7 @@
                             <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>都道府県</p>
                             <select name="prefecture" id="prefecture" class="Form-Item-Input">
                                 <option value="" selected disabled>都道府県を選択してください</option>
-                                @foreach (Config::get('const.prefecture') as $key => $value)
+                                @foreach ($prefectures as $key => $value)
                                     <option value="{{ $key }}"
                                         {{ old('prefecture', isset($user) ? $user->prefecture : '') == $key ? 'selected' : '' }}>
                                         {{ $value }}
@@ -163,7 +164,7 @@
                             <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>アカウントの種類</p>
                             <select name="admin_level" id="admin_level" class="Form-Item-Input">
                                 <option value="" selected disabled>アカウントの種類を選択してください</option>
-                                @foreach (Config::get('const.admin_level') as $key => $value)
+                                @foreach ($adminLevels as $key => $value)
                                     <option value="{{ $key }}"
                                         {{ old('admin_level', isset($user) ? $user->admin_level : '') == $key ? 'selected' : '' }}>
                                         {{ $value }}
