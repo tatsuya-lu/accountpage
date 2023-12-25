@@ -7,25 +7,30 @@ use App\Mail\ContactsSendmail;
 use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\ContactRequest;
+use Config;
 
 
 class ContactsController extends Controller
 {
     public function index()
     {
-        //入力ページを表示
-        return view('contact.index');
+        $genders = Config::get('const.gender');
+        $professions = Config::get('const.profession');
+
+        return view('contact.index', compact('genders', 'professions'));
     }
 
     public function confirm(ContactRequest $request)
     {
 
         $validatedData = $request->validated();
+        $genders = config('const.gender');
+        $professions = config('const.profession');
 
-        //確認ページに表示
-        //入力値を因数に渡す
         return view('contact.confirm', [
             'inputs' => $validatedData,
+            'genders' => $genders,
+            'professions' => $professions,
         ]);
     }
 
@@ -61,9 +66,15 @@ class ContactsController extends Controller
                 'body' => $request->body
             ]);
 
+            // ここで genders と professions を再度取得してビューに渡す
+            $genders = config('const.gender');
+            $professions = config('const.profession');
+
             //送信完了ページのviewを表示
             return view('contact.thanks', [
                 'inputs' => $inputs,
+                'genders' => $genders,
+                'professions' => $professions,
             ]);
         }
     }

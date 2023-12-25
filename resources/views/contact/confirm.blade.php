@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="ja">
 
+
 <head>
     <link rel="stylesheet" href="../css/contact-style.css">
 </head>
 
+<body>
 
     <div class="Form">
 
@@ -43,13 +45,13 @@
 
             <div class="Form-Item">
                 <label class="Form-Item-Label">性別</label>
-                {{ config('const.gender.' . $inputs['gender']) }}
+                {{ $genders[$inputs['gender']] }}
                 <input class="Form-Item-Input" name="gender" value="{{ $inputs['gender'] }}" type="hidden">
             </div>
-            
+
             <div class="Form-Item">
                 <label class="Form-Item-Label">職業</label>
-                {{ config('const.profession.' . $inputs['profession']) }}
+                {{ $professions[$inputs['profession']] }}
                 <input class="Form-Item-Input" name="profession" value="{{ $inputs['profession'] }}" type="hidden">
             </div>
 
@@ -65,5 +67,6 @@
 
     </div>
     </form>
+</body>
 
 </html>
