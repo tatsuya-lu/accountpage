@@ -19,20 +19,7 @@ class InquirySeeder extends Seeder
         DB::table('posts')->truncate();
 
         // シーダーの内容をここに追加
-        \App\Models\Post::factory()->count(15)->create([
-            'gender' => function () {
-                $faker = \Faker\Factory::create();
-                return $faker->randomElement(array_values(Config::get('const.gender')));
-            },
-            'profession' => function () {
-                $faker = \Faker\Factory::create();
-                return $faker->randomElement(array_values(Config::get('const.profession')));
-            },
-            'status' => function () {
-                $faker = \Faker\Factory::create();
-                return $faker->randomElement(array_values(Config::get('const.status')));
-            },
-        ]);
+        \App\Models\Post::factory()->count(15)->create();
     }
 }
 

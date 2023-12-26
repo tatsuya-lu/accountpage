@@ -18,20 +18,16 @@ class PostFactory extends Factory
         $phoneNumber = $this->faker->numerify('###########');
         $phoneNumberWithoutHyphen = str_replace('-', '', $phoneNumber);
 
-        $genders = array_keys(Config::get('const.gender'));
-        $professions = array_keys(Config::get('const.profession'));
-        $statuses = array_keys(Config::get('const.status'));
-
         return [
             'company' => $this->faker->company,
             'name' => $this->faker->name,
             'tel' => $phoneNumberWithoutHyphen,
             'email' => $this->faker->unique()->safeEmail,
             'birthday' => $this->faker->date,
-            'gender' => $this->faker->randomElement(array_values(Config::get('const.gender'))),
-            'profession' => $this->faker->randomElement(array_values(Config::get('const.profession'))),
+            'gender' => $this->faker->randomElement(array_keys(Config::get('const.gender'))),
+            'profession' => $this->faker->randomElement(array_keys(Config::get('const.profession'))),
             'body' => 'これはお問い合わせの本文です。',
-            'status' => $this->faker->randomElement(array_values(Config::get('const.status'))),
+            'status' => $this->faker->randomElement(array_keys(Config::get('const.status'))),
             'comment' => 'これは備考欄です。',
         ];
     }

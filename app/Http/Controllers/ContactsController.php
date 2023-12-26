@@ -12,25 +12,33 @@ use Config;
 
 class ContactsController extends Controller
 {
+
+    protected $genders;
+    protected $professions;
+
+    public function __construct()
+    {
+        $this->genders = config('const.gender');
+        $this->professions = config('const.profession');
+    }
+
     public function index()
     {
-        $genders = Config::get('const.gender');
-        $professions = Config::get('const.profession');
-
-        return view('contact.index', compact('genders', 'professions'));
+        return view('contact.index', [
+            'genders' => $this->genders,
+            'professions' => $this->professions,
+        ]);
     }
 
     public function confirm(ContactRequest $request)
     {
 
         $validatedData = $request->validated();
-        $genders = config('const.gender');
-        $professions = config('const.profession');
 
         return view('contact.confirm', [
             'inputs' => $validatedData,
-            'genders' => $genders,
-            'professions' => $professions,
+            'genders' => $this->genders,
+            'professions' => $this->professions,
         ]);
     }
 
@@ -49,7 +57,7 @@ class ContactsController extends Controller
                 ->route('contact.index')
                 ->withInput($inputs);
         } else {
-            // //入力されたメールアドレスにメールを送信
+            //入力されたメールアドレスにメールを送信
             // \Mail::to($inputs['email'])->send(new ContactsSendmail($inputs));
 
             //再送信を防ぐためにトークンを再発行
@@ -71,11 +79,7 @@ class ContactsController extends Controller
             $professions = config('const.profession');
 
             //送信完了ページのviewを表示
-            return view('contact.thanks', [
-                'inputs' => $inputs,
-                'genders' => $genders,
-                'professions' => $professions,
-            ]);
+            return view('contact.thanks', compact('inputs', 'genders', 'professions'));
         }
     }
 }

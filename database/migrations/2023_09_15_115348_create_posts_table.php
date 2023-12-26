@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('gender');
             $table->string('profession');
             $table->text('body');
-            $table->string('status')->default('未対応');
+            $table->string('status')->default('default');
             $table->text('comment')->nullable();
             $table->timestamps();
         });

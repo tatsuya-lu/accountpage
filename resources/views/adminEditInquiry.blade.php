@@ -91,11 +91,11 @@
                         </div>
 
                         <div class="Inquiry-Item">
-                            <label for="gender" class="Form-Item-Label Inquiry-Label">性別:{{ $inquiry->gender }}</label>
+                            <label for="gender" class="Form-Item-Label Inquiry-Label">性別:{{ config('const.gender.' . $inquiry->gender) }}</label>
                         </div>
 
                         <div class="Inquiry-Item">
-                            <label for="profession" class="Form-Item-Label Inquiry-Label">職業:{{ $inquiry->profession }}</label>
+                            <label for="profession" class="Form-Item-Label Inquiry-Label">職業:{{ config('const.profession.' . $inquiry->profession) }}</label>
                         </div>
 
                         <input type="submit" class="Form-Btn" value="更新">
