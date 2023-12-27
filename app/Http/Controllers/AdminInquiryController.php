@@ -11,12 +11,12 @@ class AdminInquiryController extends Controller
     public function index()
     {
         $inquiries = Post::paginate(10);
-        return view('adminInquirylist', ['inquiries' => $inquiries]);
+        return view('adminInquirylist',compact('inquiries'));
     }
 
     public function edit(Post $inquiry)
     {
-        return view('adminEditInquiry', ['inquiry' => $inquiry]);
+        return view('adminEditInquiry', compact('inquiry'));
     }
 
     public function update(InquiryRequest $request, Post $inquiry)

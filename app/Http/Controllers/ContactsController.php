@@ -24,22 +24,21 @@ class ContactsController extends Controller
 
     public function index()
     {
-        return view('contact.index', [
-            'genders' => $this->genders,
-            'professions' => $this->professions,
-        ]);
+        $genders = $this->genders;
+        $professions = $this->professions;
+
+        return view('contact.index', compact('genders', 'professions'));
     }
 
     public function confirm(ContactRequest $request)
     {
 
         $validatedData = $request->validated();
+        $inputs = $validatedData;
+        $genders = $this->genders;
+        $professions = $this->professions;
 
-        return view('contact.confirm', [
-            'inputs' => $validatedData,
-            'genders' => $this->genders,
-            'professions' => $this->professions,
-        ]);
+        return view('contact.confirm',compact('inputs','genders', 'professions'));
     }
 
     public function send(ContactRequest $request)

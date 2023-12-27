@@ -9,7 +9,7 @@ use App\Models\AdminUser;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\TableRequest; 
+use App\Http\Requests\TableRequest;
 use Config;
 
 
@@ -31,10 +31,10 @@ class TableController extends Controller
 
     public function adminRegisterForm(Request $request)
     {
-        return view('adminRegister', [
-            'prefectures' => $this->prefectures,
-            'adminLevels' => $this->adminLevels,
-        ]);
+        $prefectures = $this->prefectures;
+        $adminLevels = $this->adminLevels;
+
+        return view('adminRegister', compact('prefectures', 'adminLevels'));
     }
 
     protected function adminRegisterDatabase(array $data)
@@ -63,7 +63,7 @@ class TableController extends Controller
     public function adminRegister(TableRequest $request)
     {
         $user = $this->adminRegisterDatabase($request->all());
-    
+
         if ($user) {
             session()->flash('registered_message', 'アカウントが正常に登録されました。');
             session()->flash('registered_email', $user->email);
@@ -76,7 +76,8 @@ class TableController extends Controller
     public function adminTable()
     {
         $users = AdminUser::all();
-        return view('adminTable', ['users' => $users]);
+
+        return view('adminTable', compact('users'));
     }
 
     public function update(TableRequest $request, AdminUser $user)
@@ -106,11 +107,10 @@ class TableController extends Controller
 
     public function edit(AdminUser $user)
     {
-        return view('adminRegister', [
-            'user' => $user,
-            'prefectures' => $this->prefectures,
-            'adminLevels' => $this->adminLevels,
-        ]);
+        $prefectures = $this->prefectures;
+        $adminLevels = $this->adminLevels;
+
+        return view('adminRegister', compact('user', 'prefectures', 'adminLevels'));
     }
 
     public function destroy(AdminUser $user)
