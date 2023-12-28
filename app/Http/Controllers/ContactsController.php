@@ -38,7 +38,7 @@ class ContactsController extends Controller
         $genders = $this->genders;
         $professions = $this->professions;
 
-        return view('contact.confirm',compact('inputs','genders', 'professions'));
+        return view('contact.confirm', compact('inputs', 'genders', 'professions'));
     }
 
     public function send(ContactRequest $request)
@@ -73,9 +73,8 @@ class ContactsController extends Controller
                 'body' => $request->body
             ]);
 
-            // ここで genders と professions を再度取得してビューに渡す
-            $genders = config('const.gender');
-            $professions = config('const.profession');
+            $genders = $this->genders;
+            $professions = $this->professions;
 
             //送信完了ページのviewを表示
             return view('contact.thanks', compact('inputs', 'genders', 'professions'));
