@@ -42,7 +42,7 @@
                         <div class="Form-Item">
                             <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>会員名</p>
                             <input type="text" id="name" name="name" class="Form-Item-Input"
-                                value="{{ old('name', isset($user) ? $user->name : '') }}" placeholder="例）山田太郎">
+                                value="{{ old('name', $user->name ?? '') }}" placeholder="例）山田太郎">
 
                             @if ($errors->has('name'))
                                 <p class="error-message">{{ $errors->first('name') }}</p>
@@ -52,8 +52,7 @@
                         <div class="Form-Item">
                             <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>フリガナ</p>
                             <input type="text" id="sub_name" name="sub_name" class="Form-Item-Input"
-                                value="{{ old('sub_name', isset($user) ? $user->sub_name : '') }}"
-                                placeholder="例）ヤマダタロウ">
+                                value="{{ old('sub_name', $user->sub_name ?? '') }}" placeholder="例）ヤマダタロウ">
 
                             @if ($errors->has('sub_name'))
                                 <p class="error-message">{{ $errors->first('sub_name') }}</p>
@@ -63,8 +62,7 @@
                         <div class="Form-Item">
                             <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>メールアドレス</p>
                             <input type="text" id="email" name="email" class="Form-Item-Input"
-                                value="{{ old('email', isset($user) ? $user->email : '') }}"
-                                placeholder="例）example@gmail.com">
+                                value="{{ old('email', $user->email ?? '') }}" placeholder="例）example@gmail.com">
 
                             @if ($errors->has('email'))
                                 <p class="error-message">{{ $errors->first('email') }}</p>
@@ -94,7 +92,7 @@
                         <div class="Form-Item">
                             <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>電話番号</p>
                             <input type="text" id="tel" name="tel" class="Form-Item-Input"
-                                value="{{ old('tel', isset($user) ? $user->tel : '') }}"
+                                value="{{ old('tel', $user->tel ?? '') }}"
                                 placeholder="例）000 0000 0000   注:ハイフン無しで入力してください">
 
                             @if ($errors->has('tel'))
@@ -105,7 +103,7 @@
                         <div class="Form-Item">
                             <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>郵便番号</p>
                             <input type="text" id="post_code" name="post_code" class="Form-Item-Input"
-                                value="{{ old('post_code', isset($user) ? $user->post_code : '') }}"
+                                value="{{ old('post_code', $user->post_code ?? '') }}"
                                 placeholder="例）000 0000   注:ハイフン無しで入力してください">
 
                             @if ($errors->has('post_code'))
@@ -119,7 +117,7 @@
                                 <option value="" selected disabled>都道府県を選択してください</option>
                                 @foreach ($prefectures as $key => $value)
                                     <option value="{{ $key }}"
-                                        {{ old('prefecture', isset($user) ? $user->prefecture : '') == $key ? 'selected' : '' }}>
+                                        {{ old('prefecture', $user->prefecture ?? '') == $key ? 'selected' : '' }}>
                                         {{ $value }}
                                     </option>
                                 @endforeach
@@ -134,44 +132,44 @@
                         <div class="Form-Item">
                             <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>市町村</p>
                             <input type="text" id="city" name="city" class="Form-Item-Input"
-                                value="{{ old('city', isset($user) ? $user->city : '') }}" placeholder="">
-
+                                value="{{ old('city', $user->city ?? '') }}" placeholder="">
+                        
                             @if ($errors->has('city'))
                                 <p class="error-message">{{ $errors->first('city') }}</p>
                             @endif
                         </div>
-
+                        
                         <div class="Form-Item">
                             <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>番地・アパート名</p>
                             <input type="text" id="street" name="street" class="Form-Item-Input"
-                                value="{{ old('street', isset($user) ? $user->street : '') }}" placeholder="">
-
+                                value="{{ old('street', $user->street ?? '') }}" placeholder="">
+                        
                             @if ($errors->has('street'))
                                 <p class="error-message">{{ $errors->first('street') }}</p>
                             @endif
                         </div>
-
+                        
                         <div class="Form-Item">
                             <label class="Form-Item-Label isMsg">備考欄</label>
-                            <textarea class="Form-Item-Textarea" name="body">{{ old('body', isset($user) ? $user->body : '') }}</textarea>
-
+                            <textarea class="Form-Item-Textarea" name="body">{{ old('body', $user->body ?? '') }}</textarea>
+                        
                             @if ($errors->has('body'))
                                 <p class="error-message">{{ $errors->first('body', '') }}</p>
                             @endif
                         </div>
-
+                        
                         <div class="Form-Item">
                             <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>アカウントの種類</p>
                             <select name="admin_level" id="admin_level" class="Form-Item-Input">
                                 <option value="" selected disabled>アカウントの種類を選択してください</option>
                                 @foreach ($adminLevels as $key => $value)
                                     <option value="{{ $key }}"
-                                        {{ old('admin_level', isset($user) ? $user->admin_level : '') == $key ? 'selected' : '' }}>
+                                        {{ old('admin_level', $user->admin_level ?? '') == $key ? 'selected' : '' }}>
                                         {{ $value }}
                                     </option>
                                 @endforeach
                             </select>
-
+                        
                             @if ($errors->has('admin_level'))
                                 <p class="error-message">{{ $errors->first('admin_level') }}</p>
                             @endif

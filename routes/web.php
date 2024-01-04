@@ -52,10 +52,6 @@ Route::get('/admin/dashboard', function () {
     return view('adminDashboard');
 })->middleware('auth:admin')->name('admin.dashboard');
 
-// Route::get('/admin/register', [\App\Http\Controllers\RegisterController::class, 'adminRegisterForm'])->middleware('auth:admin');
-
-// Route::post('/admin/register', [\App\Http\Controllers\RegisterController::class, 'adminRegister'])->middleware('auth:admin')->name('admin.register');
-
 Route::prefix('admin')->middleware(['auth:admin'])->group(function () {
     // 既存のアカウント一覧表示
     Route::get('/table', [TableController::class, 'adminTable'])->name('admin.table');
