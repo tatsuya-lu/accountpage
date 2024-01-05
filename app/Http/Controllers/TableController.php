@@ -31,10 +31,11 @@ class TableController extends Controller
 
     public function adminRegisterForm(Request $request)
     {
+        $user = new AdminUser;
         $prefectures = $this->prefectures;
         $adminLevels = $this->adminLevels;
 
-        return view('adminRegister', compact('prefectures', 'adminLevels'));
+        return view('adminRegister', compact('user','prefectures', 'adminLevels'));
     }
 
     protected function adminRegisterDatabase(array $data)
