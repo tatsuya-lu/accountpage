@@ -17,14 +17,37 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
-    
+
     <script src="https://kit.fontawesome.com/d8cd936af6.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body class="font-sans antialiased">
+    <div class="container">
+        <header>
+            <p class="side-button"><span class="fa-solid fa-bars"></span></p>
+            <div class="side-menulist">
+                <a href="{{ route('admin.dashboard') }}">
+                    <p><span class="fa-solid fa-house"></span>HOME</p>
+                </a>
+                <a href="{{ route('admin.table') }}">
+                    <p><span class="fa-solid fa-envelopes-bulk"></span>アカウント一覧</p>
+                </a>
+                <a href="{{ route('admin.inquiry.index') }}">
+                    <p><span class="fa-solid fa-envelopes-bulk"></span>お問い合わせ一覧</p>
+                </a>
+            </div>
+        </header>
 
-    @yield('content')
+        <main>
+            <p class="admin">ログイン中：管理者 {{ Auth::guard('admin')->user()->name ?? 'undefined' }}</p>
+            <p class="logout"><a href="{{ route('admin.logout') }}"><span class="logout-btn">ログアウト</span></a></p>
+            <div class="main-aria">
+                @yield('content')
+            </div>
+        </main>
+    </div>
 
 </body>
+
 </html>
