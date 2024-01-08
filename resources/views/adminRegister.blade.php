@@ -8,25 +8,10 @@
 
 <body>
     <div class="container">
-        <header>
-            <p class="side-button"><span class="fa-solid fa-bars"></span></p>
-            <div class="side-menulist">
-                <a href="{{ route('admin.dashboard') }}">
-                    <p><span class="fa-solid fa-house"></span>HOME</p>
-                </a>
-                <a href="{{ route('admin.table') }}">
-                    <p><span class="fa-solid fa-envelopes-bulk"></span>アカウント一覧</p>
-                </a>
-                <a href="{{ route('admin.inquiry.index') }}">
-                    <p><span class="fa-solid fa-envelopes-bulk"></span>お問い合わせ一覧</p>
-                </a>
-            </div>
-
-        </header>
+        @include('layouts.header')
 
         <main>
-            <p class="admin">ログイン中：管理者 {{ Auth::guard('admin')->user()->name ?? 'undefined' }}</p>
-            <p class="logout"><a href="{{ route('admin.logout') }}"><span class="logout-btn">ログアウト</span></a></p>
+            @include('layouts.login')
 
             <div class="main-aria">
                 <p class="page-title">アカウント一覧</p>
@@ -41,7 +26,7 @@
                     <div class="Form-Item">
                         <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>会員名</p>
                         <input type="text" id="name" name="name" class="Form-Item-Input"
-                            value="{{ old('name', $user->name ?? '') }}" placeholder="例）山田太郎">
+                            value="{{ old('name', $user->name) }}" placeholder="例）山田太郎">
 
                         @if ($errors->has('name'))
                             <p class="error-message">{{ $errors->first('name') }}</p>
@@ -51,7 +36,7 @@
                     <div class="Form-Item">
                         <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>フリガナ</p>
                         <input type="text" id="sub_name" name="sub_name" class="Form-Item-Input"
-                            value="{{ old('sub_name', $user->sub_name ?? '') }}" placeholder="例）ヤマダタロウ">
+                            value="{{ old('sub_name', $user->sub_name) }}" placeholder="例）ヤマダタロウ">
 
                         @if ($errors->has('sub_name'))
                             <p class="error-message">{{ $errors->first('sub_name') }}</p>
@@ -61,7 +46,7 @@
                     <div class="Form-Item">
                         <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>メールアドレス</p>
                         <input type="text" id="email" name="email" class="Form-Item-Input"
-                            value="{{ old('email', $user->email ?? '') }}" placeholder="例）example@gmail.com">
+                            value="{{ old('email', $user->email) }}" placeholder="例）example@gmail.com">
 
                         @if ($errors->has('email'))
                             <p class="error-message">{{ $errors->first('email') }}</p>
@@ -91,7 +76,7 @@
                     <div class="Form-Item">
                         <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>電話番号</p>
                         <input type="text" id="tel" name="tel" class="Form-Item-Input"
-                            value="{{ old('tel', $user->tel ?? '') }}"
+                            value="{{ old('tel', $user->tel) }}"
                             placeholder="例）000 0000 0000   注:ハイフン無しで入力してください">
 
                         @if ($errors->has('tel'))
@@ -102,7 +87,7 @@
                     <div class="Form-Item">
                         <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>郵便番号</p>
                         <input type="text" id="post_code" name="post_code" class="Form-Item-Input"
-                            value="{{ old('post_code', $user->post_code ?? '') }}"
+                            value="{{ old('post_code', $user->post_code) }}"
                             placeholder="例）000 0000   注:ハイフン無しで入力してください">
 
                         @if ($errors->has('post_code'))
@@ -116,7 +101,7 @@
                             <option value="" selected disabled>都道府県を選択してください</option>
                             @foreach ($prefectures as $key => $value)
                                 <option value="{{ $key }}"
-                                    {{ old('prefecture', $user->prefecture ?? '') == $key ? 'selected' : '' }}>
+                                    {{ old('prefecture', $user->prefecture) == $key ? 'selected' : '' }}>
                                     {{ $value }}
                                 </option>
                             @endforeach
@@ -131,7 +116,7 @@
                     <div class="Form-Item">
                         <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>市町村</p>
                         <input type="text" id="city" name="city" class="Form-Item-Input"
-                            value="{{ old('city', $user->city ?? '') }}" placeholder="">
+                            value="{{ old('city', $user->city) }}" placeholder="">
 
                         @if ($errors->has('city'))
                             <p class="error-message">{{ $errors->first('city') }}</p>
@@ -141,7 +126,7 @@
                     <div class="Form-Item">
                         <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>番地・アパート名</p>
                         <input type="text" id="street" name="street" class="Form-Item-Input"
-                            value="{{ old('street', $user->street ?? '') }}" placeholder="">
+                            value="{{ old('street', $user->street) }}" placeholder="">
 
                         @if ($errors->has('street'))
                             <p class="error-message">{{ $errors->first('street') }}</p>
@@ -150,7 +135,7 @@
 
                     <div class="Form-Item">
                         <label class="Form-Item-Label isMsg">備考欄</label>
-                        <textarea class="Form-Item-Textarea" name="body">{{ old('body', $user->body ?? '') }}</textarea>
+                        <textarea class="Form-Item-Textarea" name="body">{{ old('body', $user->body) }}</textarea>
 
                         @if ($errors->has('body'))
                             <p class="error-message">{{ $errors->first('body', '') }}</p>
@@ -163,7 +148,7 @@
                             <option value="" selected disabled>アカウントの種類を選択してください</option>
                             @foreach ($adminLevels as $key => $value)
                                 <option value="{{ $key }}"
-                                    {{ old('admin_level', $user->admin_level ?? '') == $key ? 'selected' : '' }}>
+                                    {{ old('admin_level', $user->admin_level) == $key ? 'selected' : '' }}>
                                     {{ $value }}
                                 </option>
                             @endforeach

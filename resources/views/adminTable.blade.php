@@ -8,24 +8,10 @@
 
 <body>
     <div class="container">
-        <header>
-            <p class="side-button"><span class="fa-solid fa-bars"></span></p>
-            <div class="side-menulist">
-                <a href="{{ route('admin.dashboard') }}">
-                    <p><span class="fa-solid fa-house"></span>HOME</p>
-                </a>
-                <a href="{{ route('admin.table') }}">
-                    <p><span class="fa-solid fa-envelopes-bulk"></span>アカウント一覧</p>
-                </a>
-                <a href="{{ route('admin.inquiry.index') }}">
-                    <p><span class="fa-solid fa-envelopes-bulk"></span>お問い合わせ一覧</p>
-                </a>
-            </div>
-        </header>
+        @include('layouts.header')
 
         <main>
-            <p class="admin">管理者 ログイン中：{{ Auth::guard('admin')->user()->name ?? 'undefined' }}</p>
-            <p class="logout"><a href="{{ route('admin.logout') }}"><span class="logout-btn">ログアウト</span></a></p>
+            @include('layouts.login')
 
             <div class="main-aria">
                 <div class="table-title">
