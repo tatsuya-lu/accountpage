@@ -504,7 +504,6 @@ table td {
 }
 
 .pagenation {
-    text-align: right;
-    margin-top: 25px;
-    margin-right: 121px;
+    float: right;
+    margin-right: 120px;
 }
