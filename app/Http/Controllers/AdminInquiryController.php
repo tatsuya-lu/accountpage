@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Http\Requests\InquiryRequest;
+use Illuminate\Pagination\Paginator;
 
 class AdminInquiryController extends Controller
 {
