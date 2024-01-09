@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-<head>
-    @extends('layouts.app')
-    <title>ログイン</title>
-</head>
+@include('layouts.head')
 
 <body>
     <div class="login-container">
@@ -29,7 +26,7 @@
             @if ($errors->has('password'))
                 <p class="error-message">{{ $errors->first('password') }}</p>
             @endif
-            
+
             <button type="submit">Login</button>
         </form>
     </div>
